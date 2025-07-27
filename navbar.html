@@ -1,0 +1,100 @@
+<!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #2a4365;">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <img src="/static/img/logo.jpeg">
+                SUMIKED
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="serviciosDropdown" role="button" data-bs-toggle="dropdown">
+                            Servicios
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="servicios.html#desarrollo-software">Desarrollo de Software</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item dropdown-toggle" href="#">Software</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="servicios.html#software-libre">Libre</a></li>
+                                    <li><a class="dropdown-item" href="servicios.html#software-pago">Pago</a></li>
+                                </ul>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="servicios.html#asistencia-tecnica">Asistencia técnica</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="servicios.html#servicio-mantenimiento">Mantenimiento</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="servicios.html#instalacion-redes">Instalación de redes</a></li>
+                            
+                        </ul>
+                    </li>
+                
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="productosDropdown" role="button" data-bs-toggle="dropdown">
+                            Productos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="productos.html#consumibles">Consumibles de Impresión</a></li>
+                            <li><a class="dropdown-item" href="productos.html#herramientas">Herramientas</a></li>
+                            <li><a class="dropdown-item" href="productos.html#componenetes-equipos">componentes y equipos</a></li>
+                        </ul>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">¿Quiénes somos?</a>
+                    </li>
+                
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="redesDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-share-alt"></i> Redes Sociales
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="redesDropdown">
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="https://facebook.com/tu_pagina" target="_blank">
+                                    <i class="fab fa-facebook-f text-primary me-2"></i> Facebook
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="https://instagram.com/tu_pagina" target="_blank">
+                                    <i class="fab fa-instagram text-danger me-2"></i> Instagram
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="https://wa.me/tu_numero" target="_blank">
+                                    <i class="fab fa-whatsapp text-success me-2"></i> WhatsApp
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="https://twitter.com/tu_pagina" target="_blank">
+                                    <i class="fab fa-twitter text-info me-2"></i> Twitter/X
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <script>
+// Script para manejar el submenú del dropdown
+document.querySelectorAll('.dropdown-submenu > a').forEach(function(element){
+    element.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        let submenu = this.nextElementSibling;
+        if(submenu) {
+            submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+        }
+    });
+});
+</script>

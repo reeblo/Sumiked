@@ -1,0 +1,350 @@
+/* Variables de color */
+:root { 
+    --primary: #ff5d1c;
+    --secondary: #6c757d;
+    --light: #f8f9fa;
+    --dark: #212529;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos generales */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+}
+
+main, .main-content, .container-main {
+    flex: 1 0 auto;
+    width: 100%;
+}
+.image-container {
+    position: relative;
+    height: 450px;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s ease;
+
+    clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);
+
+
+}
+/* Hero section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('https://drive.google.com/uc?id=ID_IMAGEN_HERO') no-repeat center center;
+    background-size: cover;
+    color: white;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Page header */
+.page-header {
+    margin-top: 56px; /* Para compensar el navbar fijo */
+}
+
+/* Cards */
+.card {
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+
+/* Barra de navegación personalizada */
+.navbar {
+    background-color: white !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    color: black !important;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.navbar-brand img {
+    height: 36px;
+    width: auto;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.nav-link {
+    color: black !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover, .nav-link:focus {
+    color: #EC560C !important;
+}
+/* Submenú para dropdown Bootstrap 5 */
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+    display: none;
+    position: absolute;
+}
+
+.dropdown-submenu:hover > .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+    padding: 0.5rem 1.5rem;
+    transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #ebf4ff;
+    color: #2a4365;
+}
+
+/* Efecto para el navbar al hacer scroll */
+.navbar-scrolled {
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+    background-color: #1e3a8a !important;
+}   
+
+/* Forzar color del icono hamburguesa */
+/* Botón hamburguesa visible y personalizado */
+.navbar-toggler {
+    border-color: black !important;
+}
+
+.navbar-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,0,0,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+/* Footer */
+footer {
+    margin-top: auto;
+}
+
+.footer-custom {
+    background-color: #EC560C !important;
+}
+
+/* Asegura que todas las secciones tengan espacio para el navbar */
+.servicio-seccion {
+    padding-top: 100px;
+    margin-top: 40px; /* Compensa el espacio extra para el scroll suave */
+    padding-bottom: 50px;
+}
+
+
+/* seccion de desarrollo de software*/
+#desarrollo-software {
+    padding: 0;
+    margin-top: 0;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+#desarrollo-software .container {
+    height: 100%;
+    padding-top: 120px;
+    padding-bottom: 100px;  
+}
+
+#desarrollo-software .row {
+    height: 100%;
+    align-items: center;
+}
+
+/* Modifica estas reglas existentes */
+#desarrollo-software .image-container {
+    position: absolute;
+    top: 0;
+    right: 683px;
+    bottom: 0;
+    width: 50%;
+    clip-path: polygon(0 0, 70% 0, 100% 100%, 0% 100%);
+    height: 100%;
+    border-radius: 0;
+    margin: 0;
+    box-shadow: none;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 0; /* Añade esto para eliminar bordes redondeados */
+}
+
+#desarrollo-software .service-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+/* Contenedor de texto */
+/* Ajustes para el contenido de texto */
+#desarrollo-software .col-md-6:first-child {
+    color: black;
+    padding-right: 0;
+    z-index: 2; 
+    background-color: rgba(255, 255, 255, 0.9); 
+    padding: 40px;
+    border-radius: 50px;
+}
+
+#desarrollo-software h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+
+#desarrollo-software p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+/* Botones - mantenemos los estilos existentes pero ajustamos espaciado */
+#desarrollo-software .d-flex.gap-3 {
+    margin-top: 0;
+    gap: 20px !important;
+}
+
+@media (max-width: 992px) {
+    #desarrollo-software .col-md-6:first-child {
+        margin: 0 auto;
+        max-width: 80%;
+        padding: 30px;
+        transform: none;
+    }
+    
+    #desarrollo-software .image-container {
+        position: relative;
+        width: 100%;
+        right: 0;
+        height: 400px;
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    #desarrollo-software {
+        min-height: auto;
+        padding-bottom: 50px;
+    }
+    
+    #desarrollo-software .col-md-6:first-child {
+        max-width: 100%;
+        padding: 25px;
+        margin: 0;
+    }
+    
+    #desarrollo-software .image-container {
+        height: 300px;
+        margin-bottom: 25px;
+    }
+    
+    #desarrollo-software h2 {
+        font-size: 2rem;
+    }
+    
+    #desarrollo-software .d-flex.gap-3 {
+        flex-direction: column;
+        gap: 15px !important;
+    }
+    
+    .btn-feature {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+/* seccion de asistencia tecnica  */
+#asistencia-tecnica {
+    padding: 0;
+    margin-top: 0;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+#asistencia-tecnica .container {
+    height: 100%;
+    padding-top: 120px;
+    padding-bottom: 100px;  
+}    
+
+#asistencia-tecnica .row {
+    height: 100%;
+    align-items: center;
+}
+
+#asistencia-tecnica .image-container {
+    position: absolute;
+    top: 0;
+    right: 683px;
+    bottom: 0;
+    width: 50%;
+    clip-path: polygon(0 0, 70% 0, 100% 100%, 0% 100%);
+    height: 100%;
+    border-radius: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+.img-lado-derecho {
+    flex: 1;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+}
+
+.texto-lado-izquierdo {
+    flex: 1;
+    background: white;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+}
+
+
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .asistencia-container {
+        flex-direction: column;
+    }
+    .img-lado-derecho {
+        clip-path: none;
+        height: 300px;
+    }
+    .texto-lado-izquierdo {
+        padding: 20px;
+    }
+}
+
