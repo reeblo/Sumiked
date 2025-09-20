@@ -1,3 +1,7 @@
+/* Espaciado extra para la sección de instalación de redes */
+#instalacion-redes {
+    padding-top: 400px; /* Ajusta este valor según la altura de tu navbar */
+}
 /*Estilos generales*/
 html, body {
     width: 100%;
@@ -668,7 +672,7 @@ footer {
 
 /* seccion de asistencia tecnica  */
 #asistencia-tecnica {
-    padding: 0;
+    padding: 40px;
     margin-top: 0;
     min-height: 100vh;
     position: relative;
@@ -695,14 +699,18 @@ footer {
     background-size: cover;
     background-position: center;
     clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
-    padding-top: 67px
+    margin-top: 0;
+    padding: 0, 0 ,0 0;
 
 }
+
 #asistencia-tecnica .img-lado-derecho img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 0;
+    margin-top: 0;
+    padding: 0;
 }
 .texto-lado-izquierdo {
     flex: 1;
@@ -767,8 +775,7 @@ footer {
 
 .text-content-mantenimiento {
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 10px;
+    padding:   30px;
     color: black;
 }
 
@@ -776,21 +783,6 @@ footer {
     font-size: 2.5rem;
     color: var(--primary);
     font-weight: 700;
-    margin-bottom: 1.5rem;
-}
-
-.text-content-mantenimiento p {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    margin-bottom: 2rem;
-}
-
-.image-grid-maintenance {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    min-height: 500px;
-    margin-top: 40px;
 }
 
 .image-grid-container {
@@ -875,7 +867,7 @@ footer {
 /* Sección de instalacion de redes */
 
 #instalacion-redes {
-    padding: 80px 0;
+    padding: 90px ;
     background-color: #f8f9fa;
 }
 .redes-content-wrapper h2 {
@@ -922,7 +914,7 @@ footer {
 }
 
 .redes-text-container {
-    padding: 0 20px;
+    padding-top: 30 10px;
 }
 
 .redes-text {
@@ -930,6 +922,10 @@ footer {
     line-height: 1.7;
     color: #555;
     margin-bottom: 2rem;
+}
+
+.redes-tittle {
+    padding-top: 30px;
 }
 
 /* Responsive */
@@ -958,7 +954,7 @@ footer {
     }
 }
 
-/* Seccion de quienes somos abaut/
+/* Seccion de quienes somos about/
 
 /* About Page Styles */
 .hero {
@@ -1009,6 +1005,108 @@ footer {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* Estilos para la página About */
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('/static/img/about-hero-bg.jpg') no-repeat center center;
+    background-size: cover;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    padding: 100px 0;
+}
+
+/* Contenedor de imagen en about */
+.image-container-about {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.image-container-about:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Tarjetas de misión y visión */
+.mission-card, .vision-card {
+    transition: all 0.3s ease;
+    border-radius: 15px;
+}
+
+.mission-card:hover, .vision-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+.mission-icon, .vision-icon, .value-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background-color: rgba(255, 93, 28, 0.1);
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+}
+
+/* Tarjetas de valores */
+.value-card {
+    transition: all 0.3s ease;
+    border-radius: 15px;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Imágenes del equipo */
+.team-img {
+    height: 250px;
+    object-fit: cover;
+}
+
+.team-card {
+    transition: all 0.3s ease;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Redes sociales del equipo */
+.social-links a {
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+    color: #e04b0e !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 40vh;
+        padding: 80px 0;
+    }
+    
+    .mission-card, .vision-card, .value-card {
+        margin-bottom: 2rem;
+    }
+    
+    .team-img {
+        height: 200px;
+    }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .hero {
@@ -1025,7 +1123,10 @@ footer {
     }
 }
 
-/* Seccion de prductos/
+/* Seccion de prductos*/
+.productos-title {
+padding-top: 30px;
+}
 
 /* Estilos para la barra de búsqueda de productos */
 .product-search {
