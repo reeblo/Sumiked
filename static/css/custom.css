@@ -1411,3 +1411,73 @@ padding-top: 30px;
         padding: 5px 10px;
     }
 }
+
+
+/*estilos admin*/
+/* Estilos para el panel de administración */
+.admin-container {
+    min-height: 100vh;
+}
+
+.admin-sidebar {
+    background: #2a4365;
+    min-height: 100vh;
+    padding: 0;
+}
+
+.admin-sidebar .nav-link {
+    color: white;
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+}
+
+.admin-sidebar .nav-link:hover,
+.admin-sidebar .nav-link.active {
+    background: var(--primary);
+    color: white;
+}
+
+.admin-header {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.product-image-preview {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Estilos para login */
+.login-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ff5d1c, #2a4365);
+}
+
+.login-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.login-header {
+    background: var(--primary);
+    color: white;
+    padding: 2rem;
+}
+
+.btn-login {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+    background: #e04b0e;
+    transform: translateY(-2px);
+}

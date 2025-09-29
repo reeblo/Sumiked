@@ -56,3 +56,115 @@ window.addEventListener('scroll', function() {
         hero.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
     }
 });
+
+
+//nuevos
+
+// Funciones para el panel de administración
+document.addEventListener('DOMContentLoaded', function() {
+    const productModal = new bootstrap.Modal(document.getElementById('productModal'));
+    const productForm = document.getElementById('productForm');
+    const saveButton = document.getElementById('saveProduct');
+    
+    // Previsualización de imagen
+    document.getElementById('productImage').addEventListener('input', function() {
+        const preview = document.getElementById('imagePreview');
+        if (this.value) {
+            preview.innerHTML = `<img src="${this.value}" class="product-image-preview mt-2" style="max-width: 200px;">`;
+        } else {
+            preview.innerHTML = '';
+        }
+    });
+    
+    // Agregar producto
+    saveButton.addEventListener('click', async function() {
+        const formData = new FormData(productForm);
+        const productData = Object.fromEntries(formData);
+        
+        // Convertir a tipos correctos
+        productData.price = parseFloat(productData.price);
+        productData.stock = parseInt(productData.stock);
+        
+        try {
+            const response = await fetch('/api/products', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(productData)
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                location.reload(); // Recargar para mostrar el nuevo producto
+            } else {
+                alert('Error al guardar el producto');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error de conexión');
+        }
+    });
+    
+    // Editar producto
+    document.querySelectorAll('.edit-product').forEach(button => {
+        button.addEventListener('click', function() {
+            const product = JSON.parse(this.dataset.product);
+            
+            // Llenar el formulario
+            document.getElementById('productId').value = product.id;
+            document.getElementById('productName').value = product.name;
+            document.getElementById('productDescription').value = product.description || '';
+            document.getElementById('productPrice').value = product.price;
+            document.getElementById('productCategory').value = product.category;
+            document.getElementById('productStock').value = product.stock;
+            document.getElementById('productImage').value = product.image_url || '';
+            
+            // Actualizar título del modal
+            document.getElementById('modalTitle').textContent = 'Editar Producto';
+            
+            // Mostrar previsualización
+            if (product.image_url) {
+                document.getElementById('imagePreview').innerHTML = 
+                    `<img src="${product.image_url}" class="product-image-preview mt-2" style="max-width: 200px;">`;
+            }
+            
+            productModal.show();
+        });
+    });
+    
+    // Eliminar producto
+    document.querySelectorAll('.delete-product').forEach(button => {
+        button.addEventListener('click', async function() {
+            const productId = this.dataset.productId;
+            
+            if (confirm('¿Estás seguro de que quieres eliminar este producto?')) {
+                try {
+                    const response = await fetch(`/api/products/${productId}`, {
+                        method: 'DELETE'
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        document.querySelector(`tr[data-product-id="${productId}"]`).remove();
+                    } else {
+                        alert('Error al eliminar el producto');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Error de conexión');
+                }
+            }
+        });
+    });
+    
+    // Limpiar formulario al cerrar modal
+    document.getElementById('productModal').addEventListener('hidden.bs.modal', function() {
+        productForm.reset();
+        document.getElementById('productId').value = '';
+        document.getElementById('imagePreview').innerHTML = '';
+        document.getElementById('modalTitle').textContent = 'Agregar Producto';
+    });
+});
