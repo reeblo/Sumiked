@@ -1,0 +1,107 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Agregar Producto - SUMIKED Admin{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="mt-4"><i class="fas fa-plus-circle me-2 text-primary"></i>Agregar Nuevo Producto</h1>
+        <a href="{{ url_for('admin.admin_products') }}" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-2"></i>Volver a Productos
+        </a>
+    </div>
+
+    <div class="card border-0 shadow-sm">
+        <div class="card-header bg-white py-3">
+            <h5 class="mb-0 text-dark">
+                <i class="fas fa-edit me-2 text-primary"></i>
+                Información del Producto
+            </h5>
+        </div>
+        <div class="card-body">
+            <form method="POST">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="name" class="form-label fw-medium">Nombre del Producto *</label>
+                            <input type="text" class="form-control" id="name" name="name" required 
+                                   placeholder="Ingresa el nombre del producto">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="category" class="form-label fw-medium">Categoría *</label>
+                            <select class="form-select" id="category" name="category" required>
+                                <option value="">Seleccionar categoría</option>
+                                <option value="Consumibles">Consumibles</option>
+                                <option value="Herramientas">Herramientas</option>
+                                <option value="Componentes">Componentes</option>
+                                <option value="Equipos">Equipos</option>
+                                <option value="Materiales">Materiales</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="price" class="form-label fw-medium">Precio *</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" id="price" name="price" 
+                                    step="0.01" min="0" placeholder="0.00" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="stock" class="form-label fw-medium">Stock Inicial</label>
+                            <input type="number" class="form-control" id="stock" name="stock" 
+                                value="0" min="0" placeholder="Cantidad en stock">
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="description" class="form-label fw-medium">Descripción</label>
+                            <textarea class="form-control" id="description" name="description" 
+                                    rows="5" placeholder="Describe las características del producto..."></textarea>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="image_url" class="form-label fw-medium">URL de Imagen</label>
+                            <input type="url" class="form-control" id="image_url" name="image_url" 
+                                placeholder="https://ejemplo.com/imagen.jpg">
+                            <div class="form-text">Ingresa la URL de una imagen representativa del producto</div>
+                        </div>
+                        
+                        <div id="imagePreview" class="mb-3 text-center p-3 border rounded bg-light"></div>
+                    </div>
+                </div>
+                
+                <div class="d-flex justify-content-between pt-3 border-top">
+                    <a href="{{ url_for('admin.admin_products') }}" class="btn btn-outline-secondary">
+                        <i class="fas fa-times me-2"></i>Cancelar
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-2"></i>Guardar Producto
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Vista previa de imagen
+    document.getElementById('image_url').addEventListener('input', function() {
+        const preview = document.getElementById('imagePreview');
+        const url = this.value.trim();
+        
+        if (url) {
+            preview.innerHTML = `
+                <p class="small text-muted mb-2">Vista previa:</p>
+                <img src="${url}" class="img-thumbnail" style="max-height: 150px; max-width: 100%;" 
+                    onerror="this.style.display='none'; preview.innerHTML='<p class=\\'text-danger small\\'>Error al cargar imagen</p>'">
+            `;
+        } else {
+            preview.innerHTML = '<p class="text-muted small">Se mostrará vista previa al ingresar URL</p>';
+        }
+    });
+</script>
+{% endblock %}

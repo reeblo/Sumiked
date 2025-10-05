@@ -1,0 +1,125 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Crear Usuario - SUMIKED Admin{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="mt-4"><i class="fas fa-user-plus me-2"></i>Crear Nuevo Usuario</h1>
+        <a href="{{ url_for('admin.manage_users') }}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left me-2"></i>Volver
+        </a>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <i class="fas fa-user-shield me-2"></i>
+            Información del Usuario
+        </div>
+        <div class="card-body">
+            <form method="POST" action="{{ url_for('admin.create_user') }}">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Nombre de Usuario *</label>
+                            <input type="text" class="form-control" id="username" name="username" 
+                                   required minlength="3" maxlength="50"
+                                   placeholder="Ej: juan.admin">
+                            <div class="form-text">Mínimo 3 caracteres, solo letras, números y puntos.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="role" class="form-label">Rol *</label>
+                            <select class="form-select" id="role" name="role" required>
+                                <option value="">Seleccionar rol...</option>
+                                <option value="admin">Administrador</option>
+                                <option value="editor">Editor</option>
+                                <option value="viewer">Solo Lectura</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña *</label>
+                            <input type="password" class="form-control" id="password" name="password" 
+                                   required minlength="8"
+                                   placeholder="Mínimo 8 caracteres">
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="confirm_password" class="form-label">Confirmar Contraseña *</label>
+                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" 
+                                   required minlength="8"
+                                   placeholder="Repite la contraseña">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-info">
+                    <h6><i class="fas fa-info-circle me-2"></i>Requisitos de Seguridad:</h6>
+                    <ul class="mb-0">
+                        <li>Mínimo 8 caracteres</li>
+                        <li>Al menos una letra mayúscula</li>
+                        <li>Al menos un número</li>
+                        <li>Al menos un carácter especial (!@#$%^&*)</li>
+                    </ul>
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a href="{{ url_for('admin.manage_users') }}" class="btn btn-secondary me-md-2">
+                        <i class="fas fa-times me-2"></i>Cancelar
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-2"></i>Crear Usuario
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+// Validación de contraseña en tiempo real
+document.getElementById('password').addEventListener('input', function() {
+    const password = this.value;
+    const requirements = {
+        length: password.length >= 8,
+        uppercase: /[A-Z]/.test(password),
+        number: /[0-9]/.test(password),
+        special: /[!@#$%^&*]/.test(password)
+    };
+    
+    // Aquí puedes agregar feedback visual si quieres
+});
+
+// Validación de confirmación de contraseña
+document.getElementById('confirm_password').addEventListener('input', function() {
+    const password = document.getElementById('password').value;
+    const confirmPassword = this.value;
+    
+    if (password !== confirmPassword && confirmPassword.length > 0) {
+        this.classList.add('is-invalid');
+    } else {
+        this.classList.remove('is-invalid');
+    }
+});
+</script>
+{% endblock %}

@@ -1,0 +1,219 @@
+{% extends "admin/base.html" %}
+
+{% block title %}SUMIKED - Panel de Administración{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-4">
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4 pt-3">
+        <div>
+            <h1 class="h3 mb-1 text-dark">Panel de Control</h1>
+            <p class="text-muted mb-0">Bienvenido, <strong class="text-primary">{{ session.username }}</strong></p>
+        </div>
+        <div class="text-end">
+            <span class="badge bg-primary fs-6">{{ session.role|title }}</span>
+        </div>
+    </div>
+
+    <!-- Estadísticas -->
+    <div class="row mb-4">
+        <div class="col-xl-3 col-md-6">
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h6 class="card-title text-muted mb-2">Total Productos</h6>
+                            <h2 class="fw-bold text-primary">{{ total_products }}</h2>
+                        </div>
+                        <div class="align-self-center">
+                            <i class="fas fa-box fa-2x text-primary opacity-75"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <a href="{{ url_for('admin.admin_products') }}" class="text-decoration-none small text-primary">
+                            Ver detalles <i class="fas fa-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xl-3 col-md-6">
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h6 class="card-title text-muted mb-2">Total Usuarios</h6>
+                            <h2 class="fw-bold text-success">{{ total_users }}</h2>
+                        </div>
+                        <div class="align-self-center">
+                            <i class="fas fa-users fa-2x text-success opacity-75"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <a href="{{ url_for('admin.manage_users') }}" class="text-decoration-none small text-success">
+                            Gestionar <i class="fas fa-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xl-3 col-md-6">
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h6 class="card-title text-muted mb-2">Stock Bajo</h6>
+                            <h2 class="fw-bold text-warning">{{ low_stock }}</h2>
+                        </div>
+                        <div class="align-self-center">
+                            <i class="fas fa-exclamation-triangle fa-2x text-warning opacity-75"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <a href="{{ url_for('admin.admin_products') }}?filter=low_stock" class="text-decoration-none small text-warning">
+                            Revisar <i class="fas fa-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xl-3 col-md-6">
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h6 class="card-title text-muted mb-2">Agotados</h6>
+                            <h2 class="fw-bold text-danger">{{ out_of_stock }}</h2>
+                        </div>
+                        <div class="align-self-center">
+                            <i class="fas fa-times-circle fa-2x text-danger opacity-75"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <a href="{{ url_for('admin.admin_products') }}?filter=out_of_stock" class="text-decoration-none small text-danger">
+                            Reponer <i class="fas fa-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Productos Recientes -->
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-white border-0 py-3">
+                    <h5 class="mb-0 text-dark">
+                        <i class="fas fa-boxes me-2 text-primary"></i>
+                        Productos Recientes
+                    </h5>
+                </div>
+                <div class="card-body">
+                    {% if recent_products %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Categoría</th>
+                                    <th>Precio</th>
+                                    <th>Stock</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for product in recent_products %}
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            {% if product.image_url %}
+                                            <img src="{{ product.image_url }}" alt="{{ product.name }}" 
+                                                 class="rounded me-3" style="width: 40px; height: 40px; object-fit: cover;">
+                                            {% else %}
+                                            <div class="bg-light rounded me-3 d-flex align-items-center justify-content-center" 
+                                                 style="width: 40px; height: 40px;">
+                                                <i class="fas fa-box text-muted"></i>
+                                            </div>
+                                            {% endif %}
+                                            <div>
+                                                <strong class="text-dark">{{ product.name }}</strong>
+                                                {% if product.description %}
+                                                <br><small class="text-muted">{{ product.description[:50] }}{% if product.description|length > 50 %}...{% endif %}</small>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-secondary">{{ product.category }}</span>
+                                    </td>
+                                    <td class="fw-bold text-dark">${{ "%.0f"|format(product.price) }}</td>
+                                    <td>
+                                        <span class="badge {% if product.stock == 0 %}bg-danger{% elif product.stock < 5 %}bg-warning{% else %}bg-success{% endif %}">
+                                            {{ product.stock }} unidades
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a href="{{ url_for('admin.edit_product', product_id=product.id) }}" 
+                                           class="btn btn-sm btn-outline-primary" title="Editar producto">
+                                           <i class="fas fa-edit"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="text-center py-5">
+                        <i class="fas fa-box fa-4x text-muted mb-3 opacity-50"></i>
+                        <p class="text-muted mb-3">No hay productos registrados.</p>
+                        <a href="{{ url_for('admin.add_product') }}" class="btn btn-primary">
+                            <i class="fas fa-plus me-2"></i>Agregar Primer Producto
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Actividad Reciente -->
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-white border-0 py-3">
+                    <h5 class="mb-0 text-dark">
+                        <i class="fas fa-shield-alt me-2 text-primary"></i>
+                        Actividad Reciente
+                    </h5>
+                </div>
+                <div class="card-body">
+                    {% if recent_logs %}
+                    <div class="list-group list-group-flush">
+                        {% for log in recent_logs %}
+                        <div class="list-group-item px-0 border-0 mb-2">
+                            <div class="d-flex w-100 justify-content-between align-items-start">
+                                <div class="flex-grow-1">
+                                    <small class="text-dark fw-medium">{{ log.action|replace('_', ' ')|title }}</small>
+                                    <br>
+                                    <small class="text-muted">{{ log.ip_address }}</small>
+                                </div>
+                                <small class="text-muted text-nowrap ms-2">{{ log.timestamp[11:16] }}</small>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <div class="text-center py-4">
+                        <i class="fas fa-shield-alt fa-3x text-muted mb-3 opacity-50"></i>
+                        <p class="text-muted">No hay actividad reciente</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

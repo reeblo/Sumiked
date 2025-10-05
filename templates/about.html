@@ -1,214 +1,195 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUMIKED - ¿Quiénes somos?</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="static/css/custom.css">
-</head>
-<body>
-    <div id="navbar-include"></div>
+{% extends "base.html" %}
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center text-white">
-                    <h1 class="display-4 fw-bold mb-4">¿Quiénes somos?</h1>
-                    <p class="lead fs-4">Conoce más sobre nuestra empresa y valores</p>
-                </div>
+{% block title %}SUMIKED - ¿Quiénes somos?{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center text-white">
+                <h1 class="display-4 fw-bold mb-4">¿Quiénes somos?</h1>
+                <p class="lead fs-4">Conoce más sobre nuestra empresa y valores</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- About Section -->
-    <section id="about-section" class="py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <!-- Columna de imagen -->
-                <div class="col-lg-6 mb-5 mb-lg-0">
-                    <div class="image-container-about">
-                        <img src="/static/img/equipo.jpeg" alt="Equipo SUMIKED" class="img-fluid rounded shadow-lg">
-                    </div>
+<!-- About Section -->
+<section id="about-section" class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Columna de imagen -->
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="image-container-about">
+                    <img src="/static/img/equipo.jpeg" alt="Equipo SUMIKED" class="img-fluid rounded shadow-lg">
                 </div>
-                
-                <!-- Columna de texto -->
-                <div class="col-lg-6">
-                    <div class="text-content-about">
-                        <h2 class="mb-4" style="color: var(--primary);">Nuestra Historia</h2>
-                        <p class="mb-4">Sumiked nació en el entorno universitario como respuesta a una necesidad 
-                            crítica en Colombia: mejorar el soporte técnico, la trazabilidad y la garantía en soluciones 
-                            tecnológicas. Lo que comenzó como un proyecto académico evolucionó rápidamente hacia una empresa
-                            con estructura, visión y proyección nacional.</p>
-                            
-                        <p class="mb-4">Hoy, Sumiked ofrece un portafolio integral de servicios:</p>
+            </div>
+            
+            <!-- Columna de texto -->
+            <div class="col-lg-6">
+                <div class="text-content-about">
+                    <h2 class="mb-4" style="color: var(--primary);">Nuestra Historia</h2>
+                    <p class="mb-4">Sumiked nació en el entorno universitario como respuesta a una necesidad 
+                        crítica en Colombia: mejorar el soporte técnico, la trazabilidad y la garantía en soluciones 
+                        tecnológicas. Lo que comenzó como un proyecto académico evolucionó rápidamente hacia una empresa
+                        con estructura, visión y proyección nacional.</p>
                         
-                        <ul class="mb-4">
-                            <li>Asistencia técnica presencial y virtual</li>
-                            <li>Mantenimiento de equipos de cómputo, telecomunicaciones e impresión</li>
-                            <li>Instalación de redes LAN, CCTV, sonido ambiental y red de TV</li>
-                            <li>Venta de equipos e insumos tecnológicos</li>
-                            <li>
-                                Desarrollo de software especializado, liderado por EDSE: el Equipo de Desarrollo de Software Especializado, dedicado a construir soluciones modulares, seguras y escalables para instituciones
-                            </li>
-                        </ul>
-                        <p class="mb-4">Sumiked es sinónimo de trazabilidad, innovación y compromiso institucional. Su historia es la de una empresa que transforma necesidades en soluciones confiables, sostenibles y estratégicas.</p>
-                    </div>
+                    <p class="mb-4">Hoy, Sumiked ofrece un portafolio integral de servicios:</p>
+                    
+                    <ul class="mb-4">
+                        <li>Asistencia técnica presencial y virtual</li>
+                        <li>Mantenimiento de equipos de cómputo, telecomunicaciones e impresión</li>
+                        <li>Instalación de redes LAN, CCTV, sonido ambiental y red de TV</li>
+                        <li>Venta de equipos e insumos tecnológicos</li>
+                        <li>
+                            Desarrollo de software especializado, liderado por EDSE: el Equipo de Desarrollo de Software Especializado, dedicado a construir soluciones modulares, seguras y escalables para instituciones
+                        </li>
+                    </ul>
+                    <p class="mb-4">Sumiked es sinónimo de trazabilidad, innovación y compromiso institucional. Su historia es la de una empresa que transforma necesidades en soluciones confiables, sostenibles y estratégicas.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Mission & Vision Section -->
-    <section id="mission-vision" class="py-5 bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 mb-5 mb-lg-0">
-                    <div class="card h-100 border-0 shadow-sm mission-card">
-                        <div class="card-body p-5 text-center">
-                            <div class="mission-icon mb-4">
-                                <i class="fas fa-bullseye fa-3x" style="color: var(--primary);"></i>
-                            </div>
-                            <h3 class="card-title mb-4" style="color: var(--primary);">Misión</h3>
-                            <p class="card-text">Misión, En Sumiked, diseñamos y operamos soluciones tecnológicas que responden a las necesidades reales del país. Ofrecemos desarrollo de software especializado, asistencia técnica presencial y virtual, mantenimiento de equipos, instalación de redes y comercialización de tecnología, todo con enfoque modular, trazable y centrado en el usuario. Nuestra misión es impulsar la transformación digital de Colombia, apoyando instituciones públicas y privadas con herramientas seguras, escalables y alineadas con los retos del futuro.</p>
+<!-- Mission & Vision Section -->
+<section id="mission-vision" class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="card h-100 border-0 shadow-sm mission-card">
+                    <div class="card-body p-5 text-center">
+                        <div class="mission-icon mb-4">
+                            <i class="fas fa-bullseye fa-3x" style="color: var(--primary);"></i>
                         </div>
+                        <h3 class="card-title mb-4" style="color: var(--primary);">Misión</h3>
+                        <p class="card-text">Misión, En Sumiked, diseñamos y operamos soluciones tecnológicas que responden a las necesidades reales del país. Ofrecemos desarrollo de software especializado, asistencia técnica presencial y virtual, mantenimiento de equipos, instalación de redes y comercialización de tecnología, todo con enfoque modular, trazable y centrado en el usuario. Nuestra misión es impulsar la transformación digital de Colombia, apoyando instituciones públicas y privadas con herramientas seguras, escalables y alineadas con los retos del futuro.</p>
                     </div>
-                </div>
-                
-                <div class="col-lg-6">
-                    <div class="card h-100 border-0 shadow-sm vision-card">
-                        <div class="card-body p-5 text-center">
-                            <div class="vision-icon mb-4">
-                                <i class="fas fa-eye fa-3x" style="color: var(--primary);"></i>
-                            </div>
-                            <h3 class="card-title mb-4" style="color: var(--primary);">Visión</h3>
-                            <p class="card-text">Visión Ser la empresa líder en Colombia en soluciones tecnológicas integrales, reconocida por su capacidad de transformar entornos institucionales y empresariales mediante software especializado, infraestructura digital y soporte técnico de excelencia. Para 2035, Sumiked será sinónimo de innovación confiable, conectividad segura y desarrollo sostenible, contribuyendo activamente al fortalecimiento del ecosistema tecnológico colombiano.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Values Section -->
-    <section id="values-section" class="py-5">
-        <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-8 text-center">
-                    <h2 class="mb-4" style="color: var(--primary);">Nuestros Valores</h2>
-                    <p class="lead">Principios que guían cada acción y decisión en SUMIKED</p>
                 </div>
             </div>
             
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 border-0 shadow-sm value-card">
-                        <div class="card-body text-center p-4">
-                            <div class="value-icon mb-3">
-                                <i class="fas fa-lightbulb fa-2x" style="color: var(--primary);"></i>
-                            </div>
-                            <h4 class="h5 mb-3" style="color: var(--primary);">Innovación</h4>
-                            <p class="mb-0">Buscamos constantemente nuevas formas de resolver problemas tecnológicos, manteniéndonos a la vanguardia de las tendencias y desarrollos del sector.</p>
+            <div class="col-lg-6">
+                <div class="card h-100 border-0 shadow-sm vision-card">
+                    <div class="card-body p-5 text-center">
+                        <div class="vision-icon mb-4">
+                            <i class="fas fa-eye fa-3x" style="color: var(--primary);"></i>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 border-0 shadow-sm value-card">
-                        <div class="card-body text-center p-4">
-                            <div class="value-icon mb-3">
-                                <i class="fas fa-handshake fa-2x" style="color: var(--primary);"></i>
-                            </div>
-                            <h4 class="h5 mb-3" style="color: var(--primary);">Compromiso</h4>
-                            <p class="mb-0">Nos comprometemos con la satisfacción total de nuestros clientes, estableciendo relaciones a largo plazo basadas en la confianza y los resultados.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 border-0 shadow-sm value-card">
-                        <div class="card-body text-center p-4">
-                            <div class="value-icon mb-3">
-                                <i class="fas fa-star fa-2x" style="color: var(--primary);"></i>
-                            </div>
-                            <h4 class="h5 mb-3" style="color: var(--primary);">Calidad</h4>
-                            <p class="mb-0">Ofrecemos solo productos y servicios de la más alta calidad, garantizando excelencia en cada detalle y superando las expectativas de nuestros clientes.</p>
-                        </div>
+                        <h3 class="card-title mb-4" style="color: var(--primary);">Visión</h3>
+                        <p class="card-text">Visión Ser la empresa líder en Colombia en soluciones tecnológicas integrales, reconocida por su capacidad de transformar entornos institucionales y empresariales mediante software especializado, infraestructura digital y soporte técnico de excelencia. Para 2035, Sumiked será sinónimo de innovación confiable, conectividad segura y desarrollo sostenible, contribuyendo activamente al fortalecimiento del ecosistema tecnológico colombiano.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Team Section -->
-    <section id="team-section" class="py-5 bg-light">
-        <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-8 text-center">
-                    <h2 class="mb-4" style="color: var(--primary);">Nuestro Equipo</h2>
-                    <p class="lead">Profesionales comprometidos con la excelencia tecnológica</p>
+<!-- Values Section -->
+<section id="values-section" class="py-5">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center">
+                <h2 class="mb-4" style="color: var(--primary);">Nuestros Valores</h2>
+                <p class="lead">Principios que guían cada acción y decisión en SUMIKED</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm value-card">
+                    <div class="card-body text-center p-4">
+                        <div class="value-icon mb-3">
+                            <i class="fas fa-lightbulb fa-2x" style="color: var(--primary);"></i>
+                        </div>
+                        <h4 class="h5 mb-3" style="color: var(--primary);">Innovación</h4>
+                        <p class="mb-0">Buscamos constantemente nuevas formas de resolver problemas tecnológicos, manteniéndonos a la vanguardia de las tendencias y desarrollos del sector.</p>
+                    </div>
                 </div>
             </div>
             
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 border-0 shadow-sm team-card">
-                        <img src="/static/img/team1.jpg" class="card-img-top team-img" alt="Carlos Mendoza - Director de Tecnología">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Carlos Mendoza</h5>
-                            <p class="text-muted">Director de Tecnología</p>
-                            <p class="card-text">Ingeniero de sistemas con más de 10 años de experiencia en desarrollo de software y arquitectura de soluciones empresariales.</p>
-                            <div class="social-links mt-3">
-                                <a href="#" class="text-primary mx-2"><i class="fab fa-linkedin"></i></a>
-                                <a href="#" class="text-primary mx-2"><i class="fab fa-twitter"></i></a>
-                            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm value-card">
+                    <div class="card-body text-center p-4">
+                        <div class="value-icon mb-3">
+                            <i class="fas fa-handshake fa-2x" style="color: var(--primary);"></i>
+                        </div>
+                        <h4 class="h5 mb-3" style="color: var(--primary);">Compromiso</h4>
+                        <p class="mb-0">Nos comprometemos con la satisfacción total de nuestros clientes, estableciendo relaciones a largo plazo basadas en la confianza y los resultados.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm value-card">
+                    <div class="card-body text-center p-4">
+                        <div class="value-icon mb-3">
+                            <i class="fas fa-star fa-2x" style="color: var(--primary);"></i>
+                        </div>
+                        <h4 class="h5 mb-3" style="color: var(--primary);">Calidad</h4>
+                        <p class="mb-0">Ofrecemos solo productos y servicios de la más alta calidad, garantizando excelencia en cada detalle y superando las expectativas de nuestros clientes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section id="team-section" class="py-5 bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center">
+                <h2 class="mb-4" style="color: var(--primary);">Nuestro Equipo</h2>
+                <p class="lead">Profesionales comprometidos con la excelencia tecnológica</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm team-card">
+                    <img src="/static/img/team1.jpg" class="card-img-top team-img" alt="Carlos Mendoza - Director de Tecnología">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Carlos Mendoza</h5>
+                        <p class="text-muted">Director de Tecnología</p>
+                        <p class="card-text">Ingeniero de sistemas con más de 10 años de experiencia en desarrollo de software y arquitectura de soluciones empresariales.</p>
+                        <div class="social-links mt-3">
+                            <a href="#" class="text-primary mx-2"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-primary mx-2"><i class="fab fa-twitter"></i></a>
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 border-0 shadow-sm team-card">
-                        <img src="/static/img/team2.jpg" class="card-img-top team-img" alt="Ana Rodríguez - Jefa de Soporte Técnico">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Ana Rodríguez</h5>
-                            <p class="text-muted">Jefa de Soporte Técnico</p>
-                            <p class="card-text">Especialista en infraestructura TI y redes, con certificaciones en Cisco y amplia experiencia en entornos corporativos.</p>
-                            <div class="social-links mt-3">
-                                <a href="#" class="text-primary mx-2"><i class="fab fa-linkedin"></i></a>
-                                <a href="#" class="text-primary mx-2"><i class="fab fa-github"></i></a>
-                            </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm team-card">
+                    <img src="/static/img/team2.jpg" class="card-img-top team-img" alt="Ana Rodríguez - Jefa de Soporte Técnico">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Ana Rodríguez</h5>
+                        <p class="text-muted">Jefa de Soporte Técnico</p>
+                        <p class="card-text">Especialista en infraestructura TI y redes, con certificaciones en Cisco y amplia experiencia en entornos corporativos.</p>
+                        <div class="social-links mt-3">
+                            <a href="#" class="text-primary mx-2"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-primary mx-2"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 border-0 shadow-sm team-card">
-                        <img src="/static/img/team3.jpg" class="card-img-top team-img" alt="Miguel Torres - Desarrollador Senior">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Miguel Torres</h5>
-                            <p class="text-muted">Desarrollador Senior</p>
-                            <p class="card-text">Experto en aplicaciones web y móviles, con dominio en JavaScript, Python y frameworks modernos de desarrollo.</p>
-                            <div class="social-links mt-3">
-                                <a href="#" class="text-primary mx-2"><i class="fab fa-linkedin"></i></a>
-                                <a href="#" class="text-primary mx-2"><i class="fab fa-github"></i></a>
-                            </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm team-card">
+                    <img src="/static/img/team3.jpg" class="card-img-top team-img" alt="Miguel Torres - Desarrollador Senior">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Miguel Torres</h5>
+                        <p class="text-muted">Desarrollador Senior</p>
+                        <p class="card-text">Experto en aplicaciones web y móviles, con dominio en JavaScript, Python y frameworks modernos de desarrollo.</p>
+                        <div class="social-links mt-3">
+                            <a href="#" class="text-primary mx-2"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-primary mx-2"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <div id="footer-include"></div>
-    
-    <script>
-        fetch('navbar.html').then(r => r.text()).then(t => document.getElementById('navbar-include').innerHTML = t);
-        fetch('footer.html').then(r => r.text()).then(t => document.getElementById('footer-include').innerHTML = t);
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js"></script>
-</body>
-</html>
+    </div>
+</section>
+{% endblock %}

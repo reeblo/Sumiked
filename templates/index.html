@@ -1,130 +1,112 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUMIKED - Inicio</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="static/css/custom.css">
-</head>
-<body>
-    {% include 'navbar.html' %}
-    // contenido relevante
-    <main class="main-content">
-        <section class="hero-section position-relative text-white d-flex align-items-center">
-            <div class="container py-5">
-                <div class="row align-items-center">
-                    <div class="col-lg-8 mx-auto text-center">
-                        <h1 class="display-3 fw-bold mb-3">¡Bienvenido a <span class="text-accent">SUMIKED 🦊</span>!</h1>
-                        <h2 class="h4 mb-4 fw-light">Suministros y Servicios</  h2>
-                        <p class="lead mb-4">
-                            Integrando <strong>tecnología, soporte y soluciones</strong> a tu medida.
-                        </p>
-                        <p class="mb-5 fw-medium">
-                            Soluciones técnicas, logísticas y operativas con enfoque modular y trazable para instituciones, empresas y comunidades.
-                        </p>
-                        <div class="d-flex flex-wrap gap-3 justify-content-center">
-                            <a href="servicios.html" class="btn btn-custom-primary px-4">
-                                <i class="fas fa-tools me-2"></i> Servicios
-                            </a>
-                            <a href="productos.html" class="btn btn-outline-light px-4">
-                                <i class="fas fa-box-open me-2"></i> Productos
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+{% extends "base.html" %}
 
-    <!-- porque elegirnos  -->
-    <section class="py-5 about-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-5 mb-lg-0 text-center">
-                    <img src="/static/img/Porqueelegírnos v.1.0.png" alt="Por qué elegirnos" class="img-fluid rounded shadow-lg" style="max-width: 90%; height: auto;">
-                </div>
-                <div class="col-lg-6">
-                    <h2 class="mb-4" style="color: var(--primary);">¿Por qué elegirnos?</h2>
-                    <p class="lead mb-4">
-                        En SUMIKED ofrecemos soluciones integrales con claridad operativa, atención técnica cercana y enfoque sostenible.
-                    </p>
-                    <p class="mb-5">
-                        Apostamos por la innovación responsable, la transparencia logística y una atención personalizada que fortalece cada etapa del proceso.
-                    </p>
-                    <a href="about.html" class="btn btn-custom-primary">
-                        <i class="fas fa-users me-2"></i> Conoce más sobre nosotros
+{% block title %}SUMIKED - Inicio{% endblock %}
+
+{% block content %}
+<section class="hero-section position-relative text-white d-flex align-items-center">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-3 fw-bold mb-3">¡Bienvenido a <span class="text-accent">SUMIKED 🦊</span>!</h1>
+                <h2 class="h4 mb-4 fw-light">Suministros y Servicios</h2>
+                <p class="lead mb-4">
+                    Integrando <strong>tecnología, soporte y soluciones</strong> a tu medida.
+                </p>
+                <p class="mb-5 fw-medium">
+                    Soluciones técnicas, logísticas y operativas con enfoque modular y trazable para instituciones, empresas y comunidades.
+                </p>
+                <div class="d-flex flex-wrap gap-3 justify-content-center">
+                    <a href="servicios.html" class="btn btn-custom-primary px-4">
+                        <i class="fas fa-tools me-2"></i> Servicios
+                    </a>
+                    <a href="productos.html" class="btn btn-outline-light px-4">
+                        <i class="fas fa-box-open me-2"></i> Productos
                     </a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!--servicios principales -->
-    <section class="py-5">
-        <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-8 text-center">
-                    <h2 class="mb-3" style="color: var(--primary);">Nuestros Servicios Principales</h2>
-                    <p class="lead">Soluciones integrales para tus necesidades tecnológicas</p>
+<!-- Por qué elegirnos -->
+<section class="py-5 about-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0 text-center">
+                <img src="/static/img/Porqueelegírnos v.1.0.png" alt="Por qué elegirnos" class="img-fluid rounded shadow-lg" style="max-width: 90%; height: auto;">
+            </div>
+            <div class="col-lg-6">
+                <h2 class="mb-4" style="color: var(--primary);">¿Por qué elegirnos?</h2>
+                <p class="lead mb-4">
+                    En SUMIKED ofrecemos soluciones integrales con claridad operativa, atención técnica cercana y enfoque sostenible.
+                </p>
+                <p class="mb-5">
+                    Apostamos por la innovación responsable, la transparencia logística y una atención personalizada que fortalece cada etapa del proceso.
+                </p>
+                <a href="about.html" class="btn btn-custom-primary">
+                    <i class="fas fa-users me-2"></i> Conoce más sobre nosotros
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Servicios principales -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center">
+                <h2 class="mb-3" style="color: var(--primary);">Nuestros Servicios Principales</h2>
+                <p class="lead">Soluciones integrales para tus necesidades tecnológicas</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 feature-card">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="h4 mb-3">Desarrollo de Software</h3>
+                        <p class="mb-4">Soluciones personalizadas diseñadas específicamente para tus necesidades empresariales.</p>
+                        <a href="servicios.html#desarrollo-software" class="btn btn-outline-primary">
+                            Más información
+                        </a>
+                    </div>
                 </div>
             </div>
             
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card h-100 feature-card">
-                        <div class="card-body text-center p-4">
-                            <div class="feature-icon">
-                                <i class="fas fa-laptop-code"></i>
-                            </div>
-                            <h3 class="h4 mb-3">Desarrollo de Software</h3>
-                            <p class="mb-4">Soluciones personalizadas diseñadas específicamente para tus necesidades empresariales.</p>
-                            <a href="servicios.html#desarrollo-software" class="btn btn-outline-primary">
-                                Más información
-                            </a>
+            <div class="col-md-4">
+                <div class="card h-100 feature-card">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-tools"></i>
                         </div>
+                        <h3 class="h4 mb-3">Asistencia Técnica</h3>
+                        <p class="mb-4">Soporte especializado para resolver cualquier problema técnico que puedas tener.</p>
+                        <a href="servicios.html#asistencia-tecnica" class="btn btn-outline-primary">
+                            Más información
+                        </a>
                     </div>
                 </div>
-                
-                <div class="col-md-4">
-                    <div class="card h-100 feature-card">
-                        <div class="card-body text-center p-4">
-                            <div class="feature-icon">
-                                <i class="fas fa-tools"></i>
-                            </div>
-                            <h3 class="h4 mb-3">Asistencia Técnica</h3>
-                            <p class="mb-4">Soporte especializado para resolver cualquier problema técnico que puedas tener.</p>
-                            <a href="servicios.html#asistencia-tecnica" class="btn btn-outline-primary">
-                                Más información
-                            </a>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 feature-card">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-network-wired"></i>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="card h-100 feature-card">
-                        <div class="card-body text-center p-4">
-                            <div class="feature-icon">
-                                <i class="fas fa-network-wired"></i>
-                            </div>
-                            <h3 class="h4 mb-3">Instalación de Redes</h3>
-                            <p class="mb-4">Infraestructura de red confiable y segura para tu empresa o institución.</p>
-                            <a href="servicios.html#instalacion-redes" class="btn btn-outline-primary">
-                                Más información
-                            </a>
-                        </div>
+                        <h3 class="h4 mb-3">Instalación de Redes</h3>
+                        <p class="mb-4">Infraestructura de red confiable y segura para tu empresa o institución.</p>
+                        <a href="servicios.html#instalacion-redes" class="btn btn-outline-primary">
+                            Más información
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    {% include 'footer.html' %}
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="static/js/main.js"></script>
-</body>
-</html>
-        
-        
-        
+    </div>
+</section>
+{% endblock %}
