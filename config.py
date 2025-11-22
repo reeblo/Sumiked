@@ -6,12 +6,12 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
     
     # Base de datos
-    if os.environ.get('DATABASE_URL'):
-        # PostgreSQL en producción
-        SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace('postgres://', 'postgresql://')
-    else:
-        # SQLite en desarrollo
-        SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'sqlite:///sumiked.db')
+    SQLALCHEMY_DATABASE_URI = os.environ.get(
+        'DATABASE_URL',
+        'postgresql+psycopg2://postgres:jose242006@localhost:5432/sumiked'
+    )
+
+
     
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
@@ -48,7 +48,6 @@ class TestingConfig(Config):
     """Configuración para testing"""
     TESTING = True
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
 
 # Configuración por defecto
 config = {

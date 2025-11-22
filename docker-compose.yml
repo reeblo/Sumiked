@@ -5,8 +5,8 @@ services:
     image: postgres:13
     environment:
       POSTGRES_DB: sumiked
-      POSTGRES_USER: sumiked_user
-      POSTGRES_PASSWORD: sumiked_password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: jose242006
     ports:
       - "5432:5432"
     volumes:
