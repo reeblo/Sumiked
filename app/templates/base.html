@@ -16,6 +16,7 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/custom.css') }}"
     />
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
     {% block extra_css %}{% endblock %}
   </head>
   <body>
@@ -207,7 +208,7 @@
                 <li>
                   <a
                     class="dropdown-item"
-                    href="{{ url_for('admin.admin_dashboard') }}"
+                    href="{{ url_for('admin.dashboard') }}"
                   >
                     <i class="fas fa-tachometer-alt me-2"></i>Panel de Control
                   </a>

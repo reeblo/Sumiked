@@ -1,219 +1,240 @@
-{% extends "admin/base.html" %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}SUMIKED Admin{% endblock %}</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #2a4365;
+        --primary-light: #3c5a87;
+        --accent: #ff5d1c;
+        --accent-dark: #e04b0e;
+        --light: #f8f9fa;
+        --lighter: #fdfdfe;
+        --border: #e2e8f0;
+        --text: #2d3748;
+        --text-muted: #718096;
+      }
 
-{% block title %}SUMIKED - Panel de Administración{% endblock %}
+      body {
+        background-color: var(--lighter);
+        color: var(--text);
+        font-family: "Segoe UI", system-ui, sans-serif;
+      }
 
-{% block content %}
-<div class="container-fluid px-4">
-    <!-- Header -->
-    <div class="d-flex justify-content-between align-items-center mb-4 pt-3">
-        <div>
-            <h1 class="h3 mb-1 text-dark">Panel de Control</h1>
-            <p class="text-muted mb-0">Bienvenido, <strong class="text-primary">{{ session.username }}</strong></p>
-        </div>
-        <div class="text-end">
-            <span class="badge bg-primary fs-6">{{ session.role|title }}</span>
-        </div>
+      .sidebar {
+        min-height: 100vh;
+        background: linear-gradient(180deg, var(--primary) 0%, #1e2e4a 100%);
+        border-right: 1px solid var(--border);
+      }
+
+      .sidebar .nav-link {
+        color: #e2e8f0;
+        padding: 12px 16px;
+        margin: 2px 8px;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        font-weight: 500;
+      }
+
+      .sidebar .nav-link:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        transform: translateX(3px);
+      }
+
+      .sidebar .nav-link.active {
+        background: var(--accent);
+        color: white;
+        box-shadow: 0 2px 8px rgba(255, 93, 28, 0.3);
+      }
+
+      .sidebar .nav-link i {
+        width: 20px;
+        text-align: center;
+        opacity: 0.9;
+      }
+
+      .navbar-brand {
+        font-weight: 600;
+        color: var(--primary) !important;
+      }
+
+      .card {
+        border: 1px solid var(--border);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        border-radius: 12px;
+      }
+
+      .card-header {
+        background: white;
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 1.5rem;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        border-color: var(--primary);
+        font-weight: 500;
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-light);
+        border-color: var(--primary-light);
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(42, 67, 101, 0.2);
+      }
+
+      .btn-accent {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: white;
+        font-weight: 500;
+      }
+
+      .btn-accent:hover {
+        background: var(--accent-dark);
+        border-color: var(--accent-dark);
+        color: white;
+      }
+
+      .table th {
+        background: var(--light);
+        color: var(--text);
+        font-weight: 600;
+        border-bottom: 2px solid var(--border);
+        padding: 12px 16px;
+      }
+
+      .table td {
+        padding: 12px 16px;
+        vertical-align: middle;
+        border-color: var(--border);
+      }
+
+      .badge {
+        font-weight: 500;
+        padding: 6px 10px;
+        border-radius: 6px;
+      }
+
+      .alert {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .form-control,
+      .form-select {
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 10px 12px;
+        transition: all 0.2s ease;
+      }
+
+      .form-control:focus,
+      .form-select:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(42, 67, 101, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+          <div class="position-sticky pt-3">
+            <div class="text-center mb-4 p-3">
+              <img
+                src="{{ url_for('static', filename='img/logo.jpeg') }}"
+                alt="SUMIKED"
+                height="40"
+                class="mb-3"
+              />
+              <h6 class="text-white mb-1" style="font-weight: 500">
+                Panel de Administración
+              </h6>
+              <small class="text-light opacity-75">SUMIKED</small>
+            </div>
+
+            <ul class="nav flex-column px-2">
+              <li class="nav-item">
+                <a
+                  class="nav-link {% if request.endpoint == 'admin.dashboard' %}active{% endif %}"
+                  href="{{ url_for('admin.dashboard') }}"
+                >
+                  <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link {% if request.endpoint in ['admin.admin_products', 'admin.add_product', 'admin.edit_product'] %}active{% endif %}"
+                  href="{{ url_for('admin.admin_products') }}"
+                >
+                  <i class="fas fa-box me-2"></i>Gestión de Productos
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link {% if request.endpoint in ['admin.manage_users', 'admin.create_user'] %}active{% endif %}"
+                  href="{{ url_for('admin.manage_users') }}"
+                >
+                  <i class="fas fa-users me-2"></i>Gestión de Usuarios
+                </a>
+              </li>
+              <li
+                class="nav-item mt-4 pt-3"
+                style="border-top: 1px solid rgba(255, 255, 255, 0.1)"
+              >
+                <a
+                  class="nav-link text-warning"
+                  href="{{ url_for('auth.logout') }}"
+                >
+                  <i class="fas fa-sign-out-alt me-2"></i>Cerrar Sesión
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Main content -->
+        <main
+          class="col-md-9 ms-sm-auto col-lg-10 px-md-4"
+          style="background: #fdfdfe; min-height: 100vh"
+        >
+          {% with messages = get_flashed_messages(with_categories=true) %} {% if
+          messages %} {% for category, message in messages %}
+          <div
+            class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show mt-3"
+            role="alert"
+          >
+            <i
+              class="fas fa-{{ 'exclamation-triangle' if category == 'error' else 'check-circle' }} me-2"
+            ></i>
+            {{ message }}
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+            ></button>
+          </div>
+          {% endfor %} {% endif %} {% endwith %} {% block content %}{% endblock
+          %}
+        </main>
+      </div>
     </div>
 
-    <!-- Estadísticas -->
-    <div class="row mb-4">
-        <div class="col-xl-3 col-md-6">
-            <div class="card border-0 shadow-sm mb-4">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <h6 class="card-title text-muted mb-2">Total Productos</h6>
-                            <h2 class="fw-bold text-primary">{{ total_products }}</h2>
-                        </div>
-                        <div class="align-self-center">
-                            <i class="fas fa-box fa-2x text-primary opacity-75"></i>
-                        </div>
-                    </div>
-                    <div class="mt-3">
-                        <a href="{{ url_for('admin.admin_products') }}" class="text-decoration-none small text-primary">
-                            Ver detalles <i class="fas fa-arrow-right ms-1"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-xl-3 col-md-6">
-            <div class="card border-0 shadow-sm mb-4">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <h6 class="card-title text-muted mb-2">Total Usuarios</h6>
-                            <h2 class="fw-bold text-success">{{ total_users }}</h2>
-                        </div>
-                        <div class="align-self-center">
-                            <i class="fas fa-users fa-2x text-success opacity-75"></i>
-                        </div>
-                    </div>
-                    <div class="mt-3">
-                        <a href="{{ url_for('admin.manage_users') }}" class="text-decoration-none small text-success">
-                            Gestionar <i class="fas fa-arrow-right ms-1"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-xl-3 col-md-6">
-            <div class="card border-0 shadow-sm mb-4">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <h6 class="card-title text-muted mb-2">Stock Bajo</h6>
-                            <h2 class="fw-bold text-warning">{{ low_stock }}</h2>
-                        </div>
-                        <div class="align-self-center">
-                            <i class="fas fa-exclamation-triangle fa-2x text-warning opacity-75"></i>
-                        </div>
-                    </div>
-                    <div class="mt-3">
-                        <a href="{{ url_for('admin.admin_products') }}?filter=low_stock" class="text-decoration-none small text-warning">
-                            Revisar <i class="fas fa-arrow-right ms-1"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-xl-3 col-md-6">
-            <div class="card border-0 shadow-sm mb-4">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <h6 class="card-title text-muted mb-2">Agotados</h6>
-                            <h2 class="fw-bold text-danger">{{ out_of_stock }}</h2>
-                        </div>
-                        <div class="align-self-center">
-                            <i class="fas fa-times-circle fa-2x text-danger opacity-75"></i>
-                        </div>
-                    </div>
-                    <div class="mt-3">
-                        <a href="{{ url_for('admin.admin_products') }}?filter=out_of_stock" class="text-decoration-none small text-danger">
-                            Reponer <i class="fas fa-arrow-right ms-1"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <!-- Productos Recientes -->
-        <div class="col-lg-8">
-            <div class="card border-0 shadow-sm mb-4">
-                <div class="card-header bg-white border-0 py-3">
-                    <h5 class="mb-0 text-dark">
-                        <i class="fas fa-boxes me-2 text-primary"></i>
-                        Productos Recientes
-                    </h5>
-                </div>
-                <div class="card-body">
-                    {% if recent_products %}
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead class="table-light">
-                                <tr>
-                                    <th>Producto</th>
-                                    <th>Categoría</th>
-                                    <th>Precio</th>
-                                    <th>Stock</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for product in recent_products %}
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            {% if product.image_url %}
-                                            <img src="{{ product.image_url }}" alt="{{ product.name }}" 
-                                                 class="rounded me-3" style="width: 40px; height: 40px; object-fit: cover;">
-                                            {% else %}
-                                            <div class="bg-light rounded me-3 d-flex align-items-center justify-content-center" 
-                                                 style="width: 40px; height: 40px;">
-                                                <i class="fas fa-box text-muted"></i>
-                                            </div>
-                                            {% endif %}
-                                            <div>
-                                                <strong class="text-dark">{{ product.name }}</strong>
-                                                {% if product.description %}
-                                                <br><small class="text-muted">{{ product.description[:50] }}{% if product.description|length > 50 %}...{% endif %}</small>
-                                                {% endif %}
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="badge bg-secondary">{{ product.category }}</span>
-                                    </td>
-                                    <td class="fw-bold text-dark">${{ "%.0f"|format(product.price) }}</td>
-                                    <td>
-                                        <span class="badge {% if product.stock == 0 %}bg-danger{% elif product.stock < 5 %}bg-warning{% else %}bg-success{% endif %}">
-                                            {{ product.stock }} unidades
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <a href="{{ url_for('admin.edit_product', product_id=product.id) }}" 
-                                           class="btn btn-sm btn-outline-primary" title="Editar producto">
-                                           <i class="fas fa-edit"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                    {% else %}
-                    <div class="text-center py-5">
-                        <i class="fas fa-box fa-4x text-muted mb-3 opacity-50"></i>
-                        <p class="text-muted mb-3">No hay productos registrados.</p>
-                        <a href="{{ url_for('admin.add_product') }}" class="btn btn-primary">
-                            <i class="fas fa-plus me-2"></i>Agregar Primer Producto
-                        </a>
-                    </div>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-
-        <!-- Actividad Reciente -->
-        <div class="col-lg-4">
-            <div class="card border-0 shadow-sm mb-4">
-                <div class="card-header bg-white border-0 py-3">
-                    <h5 class="mb-0 text-dark">
-                        <i class="fas fa-shield-alt me-2 text-primary"></i>
-                        Actividad Reciente
-                    </h5>
-                </div>
-                <div class="card-body">
-                    {% if recent_logs %}
-                    <div class="list-group list-group-flush">
-                        {% for log in recent_logs %}
-                        <div class="list-group-item px-0 border-0 mb-2">
-                            <div class="d-flex w-100 justify-content-between align-items-start">
-                                <div class="flex-grow-1">
-                                    <small class="text-dark fw-medium">{{ log.action|replace('_', ' ')|title }}</small>
-                                    <br>
-                                    <small class="text-muted">{{ log.ip_address }}</small>
-                                </div>
-                                <small class="text-muted text-nowrap ms-2">{{ log.timestamp[11:16] }}</small>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                    {% else %}
-                    <div class="text-center py-4">
-                        <i class="fas fa-shield-alt fa-3x text-muted mb-3 opacity-50"></i>
-                        <p class="text-muted">No hay actividad reciente</p>
-                    </div>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-{% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

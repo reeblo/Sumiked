@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Verificador de instalación y configuración
 """
@@ -13,7 +12,7 @@ def check_setup():
     
     issues = []
     
-    # 1. Verificar archivo .env
+    # verificar archivo .env
     if not Path('.env').exists():
         issues.append("❌ Archivo .env no encontrado. Copia .env.example a .env")
     
@@ -35,7 +34,7 @@ def check_setup():
             if not cursor.fetchone():
                 issues.append(f"❌ Tabla {table} no existe en la base de datos")
         
-        # Verificar usuario admin
+        # Verificacion administrador
         cursor.execute('SELECT COUNT(*) FROM users WHERE role = "admin" AND is_active = 1')
         if cursor.fetchone()[0] == 0:
             issues.append("❌ No hay usuario admin en la base de datos")
@@ -44,13 +43,13 @@ def check_setup():
     except Exception as e:
         issues.append(f"❌ Error al verificar base de datos: {e}")
     
-    # 4. Verificar estructura de directorios
+    # Verificacion de estrcutora de directorios
     required_dirs = ['static/img/products', 'templates/admin', 'logs']
     for dir_path in required_dirs:
         if not Path(dir_path).exists():
             issues.append(f"❌ Directorio {dir_path} no existe")
     
-    # Mostrar resultados
+    # Resultados
     if issues:
         print("\n⚠️  Se encontraron problemas:")
         for issue in issues:

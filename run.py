@@ -1,18 +1,17 @@
-#!/usr/bin/env python3
 """
-Punto de entrada principal para Sumiked
+Punto de ejecucion Sumiked.
 """
 import os
 from app import create_app
 from dotenv import load_dotenv
 
-# Cargar variables de entorno
+# Carga variables de entorno desde el archivo .env
 load_dotenv()
 
 app = create_app()
 
 if __name__ == '__main__':
-    # Configuración del servidor
+    # configuracion del host y puerto desde variables de entorno
     host = os.environ.get('HOST', '0.0.0.0')
     port = int(os.environ.get('PORT', 5000))
     debug = os.environ.get('FLASK_DEBUG', 'True').lower() == 'true'

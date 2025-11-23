@@ -10,7 +10,7 @@ def login():
     """Página de inicio de sesión"""
     # Si ya está autenticado, redirigir al admin
     if 'user_id' in session:
-        return redirect(url_for('admin.dashboard'))
+        return redirect('/admin')
     
     if request.method == 'POST':
         username = request.form.get('username', '').strip()
@@ -29,15 +29,30 @@ def login():
             session['username'] = user.username
             session['role'] = user.role
             session.permanent = True
-            
-            # Actualizar último login
+
             user.update_last_login()
-            
-            SecurityService.log_action('login_exitoso', user.id)
-            flash('Inicio de sesión exitoso', 'success')
-            return redirect(url_for('admin.dashboard'))
+
+            try:
+                SecurityService.log_action('login', user.id, details=f'IP: {request.remote_addr}')
+            except Exception:
+                pass
+
+            # DEBUG: imprimir session y decidir redirección
+            print("Session after login:", dict(session))
+
+            # Intentar url_for al endpoint admin más probable, con fallback a path
+            try:
+                return redirect(url_for('admin.dashboard'))
+            except Exception:
+                try:
+                    return redirect(url_for('admin.dashboard'))
+                except Exception:
+                    return redirect('/admin')
         else:
-            SecurityService.log_action('login_fallido')
+            try:
+                SecurityService.log_action('login_fallido')
+            except Exception:
+                pass
             flash('Usuario o contraseña incorrectos', 'error')
     
     return render_template('login.html')
