@@ -1481,3 +1481,73 @@ padding-top: 30px;
     background: #e04b0e;
     transform: translateY(-2px);
 }
+
+/* === Tema administración === */
+:root{
+  --admin-primary: #2a4365;
+  --admin-accent: #f6ad55;
+  --admin-muted: #6b7280;
+  --admin-bg: #f7fbfd;
+  --admin-card: #ffffff;
+  --admin-text: #0f1724;
+}
+
+.admin-theme{
+  background: var(--admin-bg);
+  color: var(--admin-text);
+  min-height: 100vh;
+  padding-top: 64px;
+}
+
+.admin-topbar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  background: linear-gradient(90deg, var(--admin-primary), #1f3a54);
+  color: #fff;
+  border-bottom: 4px solid var(--admin-accent);
+}
+
+.admin-sidebar{
+  background: var(--admin-card);
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(40,60,80,0.06);
+}
+
+.admin-content .card{
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(38,63,84,0.05);
+  border: none;
+}
+
+.btn-primary{
+  background: var(--admin-primary);
+  border-color: var(--admin-primary);
+}
+
+.btn-primary:hover{
+  background:#21374f; border-color:#21374f;
+}
+
+.btn-accent{
+  background: var(--admin-accent);
+  border-color: var(--admin-accent);
+  color: #fff;
+}
+
+.table thead th{
+  background: linear-gradient(90deg, rgba(42,67,101,0.95), rgba(34,53,85,0.95));
+  color: #fff;
+  border: none;
+}
+
+.table tbody tr:hover{
+  background: rgba(42,67,101,0.03);
+}
+
+/* Helpers */
+.admin-quick-stats .stat{
+  padding:14px; border-radius:10px; background:#fff; box-shadow:0 4px 12px rgba(10,20,30,0.04); text-align:center;
+}

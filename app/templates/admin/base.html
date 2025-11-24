@@ -12,207 +12,251 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='static/css/custom.css') }}"
+    />
     <style>
       :root {
         --primary: #2a4365;
-        --primary-light: #3c5a87;
+        --primary-light: #3d5a80;
+        --primary-dark: #1e2f4a;
+
         --accent: #ff5d1c;
         --accent-dark: #e04b0e;
-        --light: #f8f9fa;
-        --lighter: #fdfdfe;
-        --border: #e2e8f0;
-        --text: #2d3748;
-        --text-muted: #718096;
+
+        --bg: #f5f7fa;
+        --bg-light: #ffffff;
+        --border: #e3e8ef;
+
+        --text: #2d3640;
+        --text-muted: #6b7785;
+
+        --radius: 14px;
       }
 
       body {
-        background-color: var(--lighter);
+        background: var(--bg);
         color: var(--text);
         font-family: "Segoe UI", system-ui, sans-serif;
+        font-size: 0.95rem;
       }
 
-      .sidebar {
-        min-height: 100vh;
-        background: linear-gradient(180deg, var(--primary) 0%, #1e2e4a 100%);
-        border-right: 1px solid var(--border);
+      /* -----------------------------------------------------------
+        TOPBAR (más profesional, más delgado, más corporativo)
+      ----------------------------------------------------------- */
+      .admin-topbar {
+        background: var(--primary);
+        padding: 0.7rem 0;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 80;
       }
 
-      .sidebar .nav-link {
-        color: #e2e8f0;
-        padding: 12px 16px;
-        margin: 2px 8px;
+      .admin-topbar strong {
+        font-size: 1rem;
+        letter-spacing: 0.3px;
+      }
+
+      .admin-topbar a.btn {
         border-radius: 8px;
-        transition: all 0.2s ease;
+        padding: 5px 12px;
+        font-size: 0.85rem;
         font-weight: 500;
+        transition: 0.2s ease;
       }
 
-      .sidebar .nav-link:hover {
-        background: rgba(255, 255, 255, 0.1);
-        color: white;
-        transform: translateX(3px);
+      .admin-topbar a.btn:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.3) !important;
       }
 
-      .sidebar .nav-link.active {
-        background: var(--accent);
-        color: white;
-        box-shadow: 0 2px 8px rgba(255, 93, 28, 0.3);
+      /* -----------------------------------------------------------
+        SIDEBAR moderno tipo Dashboard Pro
+      ----------------------------------------------------------- */
+      .admin-sidebar {
+        background: var(--bg-light);
+        border-radius: var(--radius);
+        padding: 1.3rem 1rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 90px;
       }
 
-      .sidebar .nav-link i {
+      .admin-sidebar .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        margin-bottom: 6px;
+        border-radius: 10px;
+        color: var(--text-muted);
+        font-weight: 500;
+        transition: 0.25s ease;
+        border: 1px solid transparent;
+      }
+
+      .admin-sidebar .nav-link i {
         width: 20px;
         text-align: center;
-        opacity: 0.9;
       }
 
-      .navbar-brand {
+      .admin-sidebar .nav-link:hover {
+        background: var(--primary-light);
+        color: white;
+        transform: translateX(4px);
+      }
+
+      .admin-sidebar .nav-link.active {
+        background: var(--primary);
+        border-color: var(--primary-dark);
+        color: white;
         font-weight: 600;
-        color: var(--primary) !important;
+        box-shadow: 0 4px 12px rgba(42, 67, 101, 0.35);
       }
 
+      /* -----------------------------------------------------------
+        CONTENIDO
+      ----------------------------------------------------------- */
+      .admin-content {
+        background: var(--bg-light);
+        padding: 2.2rem;
+        border-radius: var(--radius);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
+        margin-top: 1rem;
+      }
+
+      /* -----------------------------------------------------------
+        TABLAS
+      ----------------------------------------------------------- */
+      .table th {
+        background: #f1f4f8;
+        border-bottom: 2px solid var(--border);
+        color: var(--text);
+        font-weight: 600;
+      }
+      .table td {
+        vertical-align: middle;
+        border-color: var(--border);
+      }
+
+      /* -----------------------------------------------------------
+        TARJETAS
+      ----------------------------------------------------------- */
       .card {
-        border: 1px solid var(--border);
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        border-radius: 12px;
+        border-radius: var(--radius);
+        border: 1px solid var(--border) !important;
+        transition: 0.2s ease;
       }
 
-      .card-header {
-        background: white;
-        border-bottom: 1px solid var(--border);
-        padding: 1rem 1.5rem;
+      .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
       }
 
+      /* -----------------------------------------------------------
+        BOTONES SUMIKED
+      ----------------------------------------------------------- */
       .btn-primary {
         background: var(--primary);
         border-color: var(--primary);
+        border-radius: 10px;
+        padding: 0.55rem 1.1rem;
         font-weight: 500;
       }
-
       .btn-primary:hover {
         background: var(--primary-light);
         border-color: var(--primary-light);
-        transform: translateY(-1px);
-        box-shadow: 0 2px 8px rgba(42, 67, 101, 0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(42, 67, 101, 0.25);
       }
 
       .btn-accent {
         background: var(--accent);
         border-color: var(--accent);
         color: white;
+        border-radius: 10px;
         font-weight: 500;
       }
-
       .btn-accent:hover {
         background: var(--accent-dark);
         border-color: var(--accent-dark);
-        color: white;
       }
 
-      .table th {
-        background: var(--light);
-        color: var(--text);
-        font-weight: 600;
-        border-bottom: 2px solid var(--border);
-        padding: 12px 16px;
-      }
-
-      .table td {
-        padding: 12px 16px;
-        vertical-align: middle;
-        border-color: var(--border);
-      }
-
-      .badge {
-        font-weight: 500;
-        padding: 6px 10px;
-        border-radius: 6px;
-      }
-
-      .alert {
-        border: none;
-        border-radius: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-      }
-
+      /* -----------------------------------------------------------
+        FORMS
+      ----------------------------------------------------------- */
       .form-control,
       .form-select {
+        border-radius: 10px;
+        padding: 10px 13px;
         border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 10px 12px;
-        transition: all 0.2s ease;
+        transition: 0.25s ease;
+        font-size: 0.93rem;
       }
 
       .form-control:focus,
       .form-select:focus {
         border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(42, 67, 101, 0.1);
+        box-shadow: 0 0 0 3px rgba(42, 67, 101, 0.15);
+      }
+
+      /* -----------------------------------------------------------
+        ALERTAS
+      ----------------------------------------------------------- */
+      .alert {
+        border-radius: 10px;
+        border-left: 5px solid var(--accent);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
       }
     </style>
   </head>
-  <body>
-    <div class="container-fluid">
-      <div class="row">
-        <!-- Sidebar -->
-        <nav class="col-md-3 col-lg-2 d-md-block sidebar collapse">
-          <div class="position-sticky pt-3">
-            <div class="text-center mb-4 p-3">
-              <img
-                src="{{ url_for('static', filename='img/logo.jpeg') }}"
-                alt="SUMIKED"
-                height="40"
-                class="mb-3"
-              />
-              <h6 class="text-white mb-1" style="font-weight: 500">
-                Panel de Administración
-              </h6>
-              <small class="text-light opacity-75">SUMIKED</small>
-            </div>
+  <body class="admin-theme">
+    <header class="admin-topbar">
+      <div
+        class="container d-flex justify-content-between align-items-center py-2"
+      >
+        <div class="d-flex align-items-center">
+          <img
+            src="{{ url_for('static', filename='img/logo.jpeg') }}"
+            height="36"
+            alt="SUMIKED"
+            class="me-3"
+          />
+          <strong class="text-white">Panel de Administración</strong>
+        </div>
+        <div>
+          <a class="btn btn-sm btn-outline-light me-2" href="/"> Ver sitio </a>
+          <a
+            class="btn btn-sm btn-outline-light"
+            href="{{ url_for('auth.logout') }}"
+          >
+            Salir
+          </a>
+        </div>
+      </div>
+    </header>
 
-            <ul class="nav flex-column px-2">
-              <li class="nav-item">
-                <a
-                  class="nav-link {% if request.endpoint == 'admin.dashboard' %}active{% endif %}"
-                  href="{{ url_for('admin.dashboard') }}"
-                >
-                  <i class="fas fa-tachometer-alt me-2"></i>Dashboard
-                </a>
+    <div class="container-fluid admin-content py-4">
+      <div class="row g-4">
+        <aside class="col-md-3">
+          <div class="admin-sidebar p-3">
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2">
+                <a class="nav-link" href="/admin">Dashboard</a>
               </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link {% if request.endpoint in ['admin.admin_products', 'admin.add_product', 'admin.edit_product'] %}active{% endif %}"
-                  href="{{ url_for('admin.admin_products') }}"
-                >
-                  <i class="fas fa-box me-2"></i>Gestión de Productos
-                </a>
+              <li class="nav-item mb-2">
+                <a class="nav-link" href="/admin/products">Productos</a>
               </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link {% if request.endpoint in ['admin.manage_users', 'admin.create_user'] %}active{% endif %}"
-                  href="{{ url_for('admin.manage_users') }}"
-                >
-                  <i class="fas fa-users me-2"></i>Gestión de Usuarios
-                </a>
-              </li>
-              <li
-                class="nav-item mt-4 pt-3"
-                style="border-top: 1px solid rgba(255, 255, 255, 0.1)"
-              >
-                <a
-                  class="nav-link text-warning"
-                  href="{{ url_for('auth.logout') }}"
-                >
-                  <i class="fas fa-sign-out-alt me-2"></i>Cerrar Sesión
-                </a>
+              <li class="nav-item mb-2">
+                <a class="nav-link" href="/admin/users">Usuarios</a>
               </li>
             </ul>
           </div>
-        </nav>
+        </aside>
 
-        <!-- Main content -->
-        <main
-          class="col-md-9 ms-sm-auto col-lg-10 px-md-4"
-          style="background: #fdfdfe; min-height: 100vh"
-        >
+        <section class="col-md-9">
           {% with messages = get_flashed_messages(with_categories=true) %} {% if
           messages %} {% for category, message in messages %}
           <div
@@ -231,7 +275,7 @@
           </div>
           {% endfor %} {% endif %} {% endwith %} {% block content %}{% endblock
           %}
-        </main>
+        </section>
       </div>
     </div>
 
