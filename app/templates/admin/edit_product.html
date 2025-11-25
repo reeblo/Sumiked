@@ -103,7 +103,13 @@
                                     </div>
                                     <div class="col-md-4">
                                         <small class="text-muted">Fecha de Creación</small>
-                                        <p class="mb-0 fw-bold">{{ product.created_at[:16] }}</p>
+                                        <p class="mb-0 fw-bold">
+                                            {% if product.created_at %}
+                                                {{ product.created_at.strftime('%Y-%m-%d %H:%M') }}
+                                            {% else %}
+                                                -
+                                            {% endif %}
+                                        </p>
                                     </div>
                                     <div class="col-md-4">
                                         <small class="text-muted">Estado</small>

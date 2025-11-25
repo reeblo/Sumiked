@@ -77,11 +77,11 @@ def change_password():
         
         if new_password != confirm_password:
             flash('Las contraseñas nuevas no coinciden', 'error')
-            return render_template('change_password.html')
+            return render_template('admin/change_password.html')
         
         if len(new_password) < 8:
             flash('La contraseña debe tener al menos 8 caracteres', 'error')
-            return render_template('change_password.html')
+            return render_template('admin/change_password.html')
         
         user = User.query.get(session['user_id'])
         
@@ -95,4 +95,4 @@ def change_password():
         else:
             flash('Contraseña actual incorrecta', 'error')
     
-    return render_template('change_password.html')
+    return render_template('admin/change_password.html')

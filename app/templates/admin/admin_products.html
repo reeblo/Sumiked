@@ -154,7 +154,13 @@ Admin{% endblock %} {% block content %}
                 </span>
               </td>
               <td>
-                <small class="text-muted">{{ product.created_at[:10] }}</small>
+                <small class="text-muted">
+                  {% if product.created_at %}
+                    {{ product.created_at.strftime('%Y-%m-%d') }}
+                  {% else %}
+                    -
+                  {% endif %}
+                </small>
               </td>
               <td>
                 <div class="btn-group btn-group-sm">
