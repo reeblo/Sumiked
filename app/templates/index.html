@@ -19,10 +19,16 @@ block content %}
           trazable para instituciones, empresas y comunidades.
         </p>
         <div class="d-flex flex-wrap gap-3 justify-content-center">
-          <a href="servicios.html" class="btn btn-custom-primary px-4">
+          <a
+            href="{{ url_for('public.servicios') }}"
+            class="btn btn-custom-primary px-4"
+          >
             <i class="fas fa-tools me-2"></i> Servicios
           </a>
-          <a href="productos.html" class="btn btn-outline-light px-4">
+          <a
+            href="{{ url_for('public.productos') }}"
+            class="btn btn-outline-light px-4"
+          >
             <i class="fas fa-box-open me-2"></i> Productos
           </a>
         </div>
@@ -53,7 +59,10 @@ block content %}
           Apostamos por la innovación responsable, la transparencia logística y
           una atención personalizada que fortalece cada etapa del proceso.
         </p>
-        <a href="about.html" class="btn btn-custom-primary">
+        <a
+          href="{{ url_for('public.about') }}"
+          class="btn btn-custom-primary"
+        >
           <i class="fas fa-users me-2"></i> Conoce más sobre nosotros
         </a>
       </div>
@@ -88,7 +97,7 @@ block content %}
               necesidades empresariales.
             </p>
             <a
-              href="servicios.html#desarrollo-software"
+              href="{{ url_for('public.servicios') }}#desarrollo-software"
               class="btn btn-outline-primary"
             >
               Más información
@@ -109,7 +118,7 @@ block content %}
               puedas tener.
             </p>
             <a
-              href="servicios.html#asistencia-tecnica"
+              href="{{ url_for('public.servicios') }}#asistencia-tecnica"
               class="btn btn-outline-primary"
             >
               Más información
@@ -130,7 +139,7 @@ block content %}
               institución.
             </p>
             <a
-              href="servicios.html#instalacion-redes"
+              href="{{ url_for('public.servicios') }}#instalacion-redes"
               class="btn btn-outline-primary"
             >
               Más información
