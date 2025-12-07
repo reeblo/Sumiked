@@ -16,7 +16,10 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/custom.css') }}"
     />
-    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='img/favicon.ico') }}"
+    />
     {% block extra_css %}{% endblock %}
   </head>
   <body>
@@ -66,21 +69,47 @@
               </a>
               <ul class="dropdown-menu">
                 <li class="dropdown-submenu position-relative">
-                  <a class="dropdown-item dropdown-toggle" href="#">Software</a>
+                  <a
+                    class="dropdown-item dropdown-toggle"
+                    href="#"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="right"
+                    title="Sección en desarrollo - Próximamente disponible"
+                  >
+                    Software
+                    <i
+                      class="fas fa-cog fa-spin text-warning ms-2"
+                      style="font-size: 0.8em"
+                    ></i>
+                  </a>
                   <ul class="dropdown-menu">
                     <li>
                       <a
-                        class="dropdown-item"
-                        href="{{ url_for('public.servicios') }}#software-libre"
-                        >Libre</a
+                        class="dropdown-item disabled"
+                        href="#"
+                        style="cursor: not-allowed; opacity: 0.6"
+                        onclick="event.preventDefault(); mostrarMensajeDesarrollo();"
                       >
+                        <i class="fas fa-wrench me-2 text-warning"></i>
+                        Libre
+                        <small class="text-muted d-block"
+                          >(En desarrollo)</small
+                        >
+                      </a>
                     </li>
                     <li>
                       <a
-                        class="dropdown-item"
-                        href="{{ url_for('public.servicios') }}#software-pago"
-                        >Pago</a
+                        class="dropdown-item disabled"
+                        href="#"
+                        style="cursor: not-allowed; opacity: 0.6"
+                        onclick="event.preventDefault(); mostrarMensajeDesarrollo();"
                       >
+                        <i class="fas fa-wrench me-2 text-warning"></i>
+                        Pago
+                        <small class="text-muted d-block"
+                          >(En desarrollo)</small
+                        >
+                      </a>
                     </li>
                   </ul>
                 </li>
@@ -132,9 +161,27 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('public.graciasati') }}"
-                >Gracias a Ti</a
+              <a
+                class="nav-link"
+                href="#"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="Sección en desarrollo - Próximamente disponible"
+                onclick="mostrarMensajeDesarrollo(); return false;"
+                style="cursor: pointer"
               >
+                <span class="position-relative">
+                  Gracias a Ti
+                  <span
+                    class="position-absolute top-0 start-100 translate-middle"
+                  >
+                    <i
+                      class="fas fa-cog fa-spin text-warning"
+                      style="font-size: 0.7em"
+                    ></i>
+                  </span>
+                </span>
+              </a>
             </li>
 
             <li class="nav-item dropdown">
