@@ -23,7 +23,7 @@
     {% block extra_css %}{% endblock %}
   </head>
   <body>
-    <!-- Navbar incluido directamente -->
+    <!-- Navbar principal -->
     <nav
       class="navbar navbar-expand-lg navbar-dark fixed-top"
       style="background-color: #2a4365"
@@ -38,6 +38,7 @@
           />
           SUMIKED
         </a>
+        <!-- botones de navegacion -->
         <button
           class="navbar-toggler"
           type="button"
@@ -67,6 +68,7 @@
               >
                 Servicios
               </a>
+              <!-- En desarrollo-->
               <ul class="dropdown-menu">
                 <li class="dropdown-submenu position-relative">
                   <a
@@ -114,6 +116,7 @@
                   </ul>
                 </li>
                 <li><hr class="dropdown-divider" /></li>
+                <!-- funcionales -->
                 <li>
                   <a
                     class="dropdown-item"
@@ -159,7 +162,7 @@
                 >¿Quiénes somos?</a
               >
             </li>
-
+            <!-- En desarrollo -->
             <li class="nav-item">
               <a
                 class="nav-link"
@@ -183,7 +186,7 @@
                 </span>
               </a>
             </li>
-
+            <!-- Funcionales -->
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -201,7 +204,7 @@
                 <li>
                   <a
                     class="dropdown-item d-flex align-items-center"
-                    href="https://facebook.com/tu_pagina"
+                    href="https://facebook.com/sumiked"
                     target="_blank"
                   >
                     <i class="fab fa-facebook-f text-primary me-2"></i> Facebook
@@ -210,7 +213,7 @@
                 <li>
                   <a
                     class="dropdown-item d-flex align-items-center"
-                    href="https://instagram.com/tu_pagina"
+                    href="https://instagram.com/sumiked"
                     target="_blank"
                   >
                     <i class="fab fa-instagram text-danger me-2"></i> Instagram
@@ -219,8 +222,9 @@
                 <li>
                   <a
                     class="dropdown-item d-flex align-items-center"
-                    href="https://wa.me/tu_numero"
+                    href="https://wa.me/+573233105765"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <i class="fab fa-whatsapp text-success me-2"></i> WhatsApp
                   </a>
@@ -228,7 +232,7 @@
                 <li>
                   <a
                     class="dropdown-item d-flex align-items-center"
-                    href="https://tiktok.com/@tu_pagina"
+                    href="https://tiktok.com/@sumiked"
                     target="_blank"
                   >
                     <i class="fab fa-tiktok me-2" style="color: #000000"></i>
@@ -237,6 +241,7 @@
                 </li>
               </ul>
             </li>
+
             <!-- Acceso de Administración -->
             {% if session.user_id %}
             <li class="nav-item dropdown">
@@ -292,11 +297,11 @@
     <!-- Contenido principal -->
     <main class="main-content">{% block content %}{% endblock %}</main>
 
-    <!-- Footer incluido directamente -->
+    <!-- Footer o pie de pagina principal -->
     <footer class="footer-custom bg-dark text-white py-4">
       <div class="container">
         <div class="row justify-content-center">
-          <!-- Sección de información -->
+          <!-- Sección de información de los desarrolladores -->
           <div class="col-lg-4 col-md-6 mb-4 mb-md-0 text-center text-md-start">
             <h5>SUMIKED</h5>
             <p class="mb-0">
@@ -305,11 +310,11 @@
             </p>
           </div>
 
-          <!-- Sección de contacto (opcional) -->
+          <!-- Sección de contacto -->
           <div class="col-lg-4 col-md-6 mb-4 mb-md-0 text-center">
             <h5>Contacto</h5>
             <p class="mb-1">
-              <i class="fas fa-envelope me-2"></i>info@sumiked.com
+              <i class="fas fa-envelope me-2"></i>sumi@sumiked.com
             </p>
             <p class="mb-0"><i class="fas fa-phone me-2"></i>+57 323 3105765</p>
           </div>
@@ -318,14 +323,14 @@
         <hr class="my-4 bg-light opacity-10" />
 
         <div class="row align-items-center">
-          <!-- Derechos de autor -->
+          <!-- Derechos de autor footer -->
           <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
             <p class="small mb-0">
               &copy; 2025 SUMIKED. Todos los derechos reservados.
             </p>
           </div>
 
-          <!-- Redes sociales -->
+          <!-- Iconos de redes sociales -->
           <div class="col-md-6 text-center text-md-end">
             <div class="social-icons">
               <a
@@ -345,7 +350,7 @@
                 <i class="fab fa-instagram"></i>
               </a>
               <a
-                href="https://wa.me/+57 323 3105765"
+                href="https://wa.me/+573233105765"
                 class="text-white"
                 aria-label="WhatsApp"
                 target="_blank"
@@ -366,7 +371,7 @@
       </div>
     </footer>
 
-    <!-- Scripts comunes -->
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     {% block extra_js %}{% endblock %}
