@@ -1,11 +1,3 @@
-//integracion del navbar y footer
-fetch("navbar.html")
-  .then((r) => r.text())
-  .then((t) => (document.getElementById("navbar-include").innerHTML = t));
-fetch("footer.html")
-  .then((r) => r.text())
-  .then((t) => (document.getElementById("footer-include").innerHTML = t));
-
 //funciones en el navbar
 // Script para manejar el submenú del dropdown
 document.querySelectorAll(".dropdown-submenu > a").forEach(function (element) {

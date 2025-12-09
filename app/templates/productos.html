@@ -476,15 +476,23 @@
                                 </div>
                             </div>
                             <div class="card-footer bg-transparent border-0 d-flex justify-content-between">
-                                <a href="#" class="btn btn-outline-primary btn-sm">
-                                    <i class="fas fa-info-circle me-2"></i> Detalles
-                                </a>
-                                <button class="btn btn-primary btn-sm {% if product.stock == 0 %}disabled{% endif %}"
-                                        {% if product.stock == 0 %}disabled{% endif %}>
-                                    <i class="fas fa-cart-plus me-2"></i> 
-                                    {{ 'Comprar' if product.stock > 0 else 'Agotado' }}
-                                </button>
-                            </div>
+                              <a href="#" class="btn btn-outline-primary btn-sm">
+                                  <i class="fas fa-info-circle me-2"></i> Detalles
+                              </a>
+                              
+                              {% if product.stock > 0 %}
+                                  <a href="https://wa.me/+573233105765?text=Hola%20SUMIKED,%20me%20interesa%20comprar%20el%20producto:%20{{ product.name|urlencode }}%0A%0APrecio:%20${{ '%.0f'|format(product.price) }}%0ACategor%C3%ADa:%20{{ product.category|urlencode }}"
+                                    class="btn btn-primary btn-sm"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                      <i class="fab fa-whatsapp me-2"></i> Comprar por WhatsApp
+                                  </a>
+                              {% else %}
+                                  <button class="btn btn-secondary btn-sm" disabled>
+                                      <i class="fas fa-ban me-2"></i> Agotado
+                                  </button>
+                              {% endif %}
+                          </div>
                         </div>
                     </div>
                     {% else %}
@@ -518,6 +526,7 @@
 {% endblock %}
 
 {% block extra_js %}
+<!-- Revisaar por que no se aplica de la mejor manera cuando se encuentra en el archvo js -->
 <script>
     // Función de búsqueda de productos mejorada
     document.querySelector('.product-search-form').addEventListener('submit', function(e) {
