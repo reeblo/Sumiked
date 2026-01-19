@@ -59,9 +59,12 @@ window.addEventListener("scroll", function () {
 
 // Funciones para el panel de administración
 document.addEventListener("DOMContentLoaded", function () {
-  const productModal = new bootstrap.Modal(
-    document.getElementById("productModal")
-  );
+  const modalElement = document.getElementById("productModal");
+
+  let productModal = null;
+  if (modalElement) {
+    productModal = new bootstrap.Modal(modalElement);
+  }
   const productForm = document.getElementById("productForm");
   const saveButton = document.getElementById("saveProduct");
 
@@ -192,3 +195,59 @@ function mostrarMensajeDesarrollo() {
   alert("⚙️ Esta sección está en desarrollo y estará disponible próximamente.");
   return false;
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const modalElement = document.getElementById("productModal");
+  const productForm = document.getElementById("productForm");
+  const saveButton = document.getElementById("saveProduct");
+  const productImageInput = document.getElementById("productImage");
+
+  let productModal = null;
+  if (modalElement) {
+    productModal = new bootstrap.Modal(modalElement);
+
+    modalElement.addEventListener("hidden.bs.modal", function () {
+      if (!productForm) return;
+      productForm.reset();
+      document.getElementById("productId").value = "";
+      document.getElementById("imagePreview").innerHTML = "";
+      document.getElementById("modalTitle").textContent = "Agregar Producto";
+    });
+  }
+
+  if (productImageInput) {
+    productImageInput.addEventListener("input", function () {
+      const preview = document.getElementById("imagePreview");
+      if (!preview) return;
+
+      preview.innerHTML = this.value
+        ? `<img src="${this.value}" class="product-image-preview mt-2" style="max-width: 200px;">`
+        : "";
+    });
+  }
+
+  if (saveButton && productForm) {
+    saveButton.addEventListener("click", async function () {
+      const formData = new FormData(productForm);
+      const productData = Object.fromEntries(formData);
+
+      productData.price = parseFloat(productData.price);
+      productData.stock = parseInt(productData.stock);
+
+      try {
+        const response = await fetch("/api/products", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(productData),
+        });
+
+        const result = await response.json();
+        if (result.success) location.reload();
+        else alert("Error al guardar el producto");
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Error de conexión");
+      }
+    });
+  }
+});
