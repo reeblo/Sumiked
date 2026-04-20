@@ -1,21 +1,11 @@
 Flask==2.3.3
 Werkzeug==2.3.7
-
-# Database
-# psycopg2-binary==2.9.9
-
-# Forms
-WTForms==3.0.1
 Flask-WTF==1.1.1
-
-# Migrations
-Flask-Migrate==4.0.5
-
-# Environment variables
-python-dotenv==1.0.0
-
-# Production server
-gunicorn==21.2.0
-
-# Utilities
-python-dateutil==2.8.2
+WTForms==3.0.1
+psycopg2-binary==2.9.9
+Flask-Migrate
+Flask-SQLAlchemy
+SQLAlchemy
+Alembic
+python-dotenv
+gunicorn
