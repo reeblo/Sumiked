@@ -1,0 +1,257 @@
+{% extends "admin/base.html" %} {% block title %}Gestión de Productos - SUMIKED
+Admin{% endblock %} {% block content %}
+<div class="container-fluid px-4">
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4 pt-3">
+    <div>
+      <h1 class="h3 mb-1 text-dark">
+        <i class="fas fa-box me-2 text-primary"></i>
+        Gestión de Productos
+      </h1>
+      <p class="text-muted mb-0">
+        Administra el inventario de productos SUMIKED
+      </p>
+    </div>
+    <a href="{{ url_for('admin.add_product') }}" class="btn btn-primary">
+      <i class="fas fa-plus me-2"></i>Nuevo Producto
+    </a>
+  </div>
+
+  {% with messages = get_flashed_messages(with_categories=true) %} {% if
+  messages %} {% for category, message in messages %}
+  <div
+    class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show"
+    role="alert"
+  >
+    <i
+      class="fas fa-{{ 'exclamation-triangle' if category == 'error' else 'check-circle' }} me-2"
+    ></i>
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  {% endfor %} {% endif %} {% endwith %}
+
+  <!-- Filtros Rápidos -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="card border-0 shadow-sm">
+        <div class="card-body py-3">
+          <div class="row g-3 align-items-center">
+            <div class="col-md-4">
+              <label class="form-label fw-medium">Filtrar por categoría:</label>
+              <select class="form-select" id="categoryFilter">
+                <option value="">Todas las categorías</option>
+                <option value="Consumibles">Consumibles</option>
+                <option value="Herramientas">Herramientas</option>
+                <option value="Componentes">Componentes</option>
+                <option value="Equipos">Equipos</option>
+                <option value="Materiales">Materiales</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label fw-medium">Filtrar por stock:</label>
+              <select class="form-select" id="stockFilter">
+                <option value="">Todo el stock</option>
+                <option value="low">Stock Bajo (< 5)</option>
+                <option value="out">Agotados</option>
+                <option value="available">Disponibles</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label fw-medium">Buscar producto:</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="searchProduct"
+                  placeholder="Nombre del producto..."
+                />
+                <button class="btn btn-outline-secondary" type="button">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabla de Productos -->
+  <div class="card border-0 shadow-sm">
+    <div class="card-header bg-white py-3">
+      <h5 class="mb-0 text-dark">
+        <i class="fas fa-list me-2 text-primary"></i>
+        Lista de Productos ({{ products|length }})
+      </h5>
+    </div>
+    <div class="card-body">
+      {% if products %}
+      <div class="table-responsive">
+        <table class="table table-hover" id="productsTable">
+          <thead class="table-light">
+            <tr>
+              <th>Producto</th>
+              <th>Categoría</th>
+              <th>Precio</th>
+              <th>Stock</th>
+              <th>Estado</th>
+              <th>Fecha</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for product in products %}
+            <tr>
+              <td>
+                <div class="d-flex align-items-center">
+                  {% if product.image_url %}
+                  <img
+                    src="{{ product.image_url }}"
+                    alt="{{ product.name }}"
+                    class="rounded me-3"
+                    style="width: 50px; height: 50px; object-fit: cover"
+                  />
+                  {% else %}
+                  <div
+                    class="bg-light rounded me-3 d-flex align-items-center justify-content-center"
+                    style="width: 50px; height: 50px"
+                  >
+                    <i class="fas fa-box text-muted"></i>
+                  </div>
+                  {% endif %}
+                  <div>
+                    <strong class="text-dark d-block"
+                      >{{ product.name }}</strong
+                    >
+                    {% if product.description %}
+                    <small class="text-muted"
+                      >{{ product.description[:60] }}{% if
+                      product.description|length > 60 %}...{% endif %}</small
+                    >
+                    {% endif %}
+                  </div>
+                </div>
+              </td>
+              <td>
+                <span class="badge bg-secondary">{{ product.category }}</span>
+              </td>
+              <td class="fw-bold text-primary">
+                ${{ "%.0f"|format(product.price) }}
+              </td>
+              <td>
+                <span
+                  class="badge {% if product.stock == 0 %}bg-danger{% elif product.stock < 5 %}bg-warning{% else %}bg-success{% endif %}"
+                >
+                  {{ product.stock }}
+                </span>
+              </td>
+              <td>
+                <span
+                  class="badge {% if product.is_active %}bg-success{% else %}bg-secondary{% endif %}"
+                >
+                  {{ 'Activo' if product.is_active else 'Inactivo' }}
+                </span>
+              </td>
+              <td>
+                <small class="text-muted">
+                  {% if product.created_at %}
+                    {{ product.created_at.strftime('%Y-%m-%d') }}
+                  {% else %}
+                    -
+                  {% endif %}
+                </small>
+              </td>
+              <td>
+                <div class="btn-group btn-group-sm">
+                  <a
+                    href="{{ url_for('admin.edit_product', product_id=product.id) }}"
+                    class="btn btn-outline-primary"
+                    title="Editar producto"
+                  >
+                    <i class="fas fa-edit"></i>
+                  </a>
+                  <a
+                    href="{{ url_for('admin.delete_product', product_id=product.id) }}"
+                    class="btn btn-outline-danger"
+                    title="Eliminar producto"
+                    onclick="return confirm('¿Estás seguro de eliminar {{ product.name }}?')"
+                  >
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% else %}
+      <div class="text-center py-5">
+        <i class="fas fa-box fa-4x text-muted mb-3 opacity-50"></i>
+        <h5 class="text-muted mb-3">No hay productos registrados</h5>
+        <p class="text-muted mb-4">
+          Comienza agregando tu primer producto al inventario
+        </p>
+        <a
+          href="{{ url_for('admin.add_product') }}"
+          class="btn btn-primary btn-lg"
+        >
+          <i class="fas fa-plus me-2"></i>Agregar Primer Producto
+        </a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+  // Filtros básicos
+  document
+    .getElementById("categoryFilter")
+    .addEventListener("change", filterProducts);
+  document
+    .getElementById("stockFilter")
+    .addEventListener("change", filterProducts);
+  document
+    .getElementById("searchProduct")
+    .addEventListener("input", filterProducts);
+
+  function filterProducts() {
+    const categoryFilter = document
+      .getElementById("categoryFilter")
+      .value.toLowerCase();
+    const stockFilter = document.getElementById("stockFilter").value;
+    const searchFilter = document
+      .getElementById("searchProduct")
+      .value.toLowerCase();
+
+    const rows = document.querySelectorAll("#productsTable tbody tr");
+
+    rows.forEach((row) => {
+      const category = row.cells[1].textContent.toLowerCase();
+      const stock = parseInt(row.cells[3].textContent);
+      const name = row.cells[0].textContent.toLowerCase();
+
+      let show = true;
+
+      // Filtro por categoría
+      if (categoryFilter && !category.includes(categoryFilter)) {
+        show = false;
+      }
+
+      // Filtro por stock
+      if (stockFilter === "low" && stock >= 5) show = false;
+      if (stockFilter === "out" && stock > 0) show = false;
+      if (stockFilter === "available" && stock === 0) show = false;
+
+      // Filtro por búsqueda
+      if (searchFilter && !name.includes(searchFilter)) {
+        show = false;
+      }
+
+      row.style.display = show ? "" : "none";
+    });
+  }
+</script>
+{% endblock %}

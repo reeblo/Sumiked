@@ -1,0 +1,126 @@
+{% extends "admin/base.html" %} {% block title %}Dashboard - Administración{%
+endblock %} {% block content %}
+
+<!-- Encabezado -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h2 class="fw-bold text-dark">Panel General</h2>
+    <p class="text-muted">Vista rápida del estado actual de SUMIKED</p>
+  </div>
+</div>
+
+<!-- Tarjetas de estadísticas -->
+<div class="row g-4 admin-quick-stats mb-4">
+  <div class="col-md-3">
+    <div class="stat shadow-sm p-4 rounded bg-white">
+      <div class="d-flex align-items-center">
+        <div class="icon bg-primary text-white rounded-circle p-3 me-3">
+          <i class="fas fa-box fa-lg"></i>
+        </div>
+        <div>
+          <small class="text-muted">Total productos</small>
+          <h4 class="fw-bold text-dark mb-0">{{ total_products }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="stat shadow-sm p-4 rounded bg-white">
+      <div class="d-flex align-items-center">
+        <div class="icon bg-success text-white rounded-circle p-3 me-3">
+          <i class="fas fa-users fa-lg"></i>
+        </div>
+        <div>
+          <small class="text-muted">Total usuarios</small>
+          <h4 class="fw-bold text-dark mb-0">{{ total_users }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="stat shadow-sm p-4 rounded bg-white">
+      <div class="d-flex align-items-center">
+        <div class="icon bg-warning text-white rounded-circle p-3 me-3">
+          <i class="fas fa-exclamation-triangle fa-lg"></i>
+        </div>
+        <div>
+          <small class="text-muted">Stock bajo</small>
+          <h4 class="fw-bold text-dark mb-0">{{ low_stock }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="stat shadow-sm p-4 rounded bg-white">
+      <div class="d-flex align-items-center">
+        <div class="icon bg-danger text-white rounded-circle p-3 me-3">
+          <i class="fas fa-times-circle fa-lg"></i>
+        </div>
+        <div>
+          <small class="text-muted">Agotados</small>
+          <h4 class="fw-bold text-dark mb-0">{{ out_of_stock }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Productos recientes -->
+<div class="card shadow-sm border-0 mb-4">
+  <div class="card-header bg-white py-3">
+    <h5 class="fw-bold mb-0">
+      <i class="fas fa-clock me-2 text-primary"></i>Productos recientes
+    </h5>
+  </div>
+  <div class="card-body">
+    {% if recent_products %}
+    <ul class="list-group list-group-flush">
+      {% for p in recent_products %}
+      <li
+        class="list-group-item d-flex justify-content-between align-items-center"
+      >
+        <div class="fw-semibold">{{ p.name }}</div>
+        <small class="text-muted">
+          {{ p.created_at.strftime('%Y-%m-%d') if p.created_at else '-' }}
+        </small>
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+
+    <div class="text-center py-4 text-muted">
+      <i class="fas fa-box-open fa-3x opacity-50 mb-3"></i>
+      <p class="mb-0">No hay productos recientes.</p>
+    </div>
+
+    {% endif %}
+  </div>
+</div>
+
+<!-- Logs recientes -->
+{% if recent_logs %}
+<div class="card shadow-sm border-0">
+  <div class="card-header bg-white py-3">
+    <h5 class="fw-bold mb-0">
+      <i class="fas fa-history me-2 text-primary"></i>Logs recientes
+    </h5>
+  </div>
+
+  <div class="card-body">
+    <ul class="list-group list-group-flush small">
+      {% for log in recent_logs %}
+      <li class="list-group-item">
+        <strong>{{ log.timestamp }}</strong> — {{ log.action }} {% if
+        log.user_id %}
+        <span class="text-muted">(Usuario: {{ log.user_id }})</span>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endif %} {% endblock %}
