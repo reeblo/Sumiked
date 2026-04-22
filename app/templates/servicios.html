@@ -1,72 +1,87 @@
 {% extends "base.html" %} {% block title %}SUMIKED - Servicios{% endblock %} {%
 block content %}
 <!-- desarrollo de software -->
-<section id="desarrollo-software" class="py-5 servicio-seccion active">
+<section id="desarrollo-software" class="servicio-seccion active">
   <div class="container">
-    <div class="row align-items-center">
-      <!-- Columna para la imagen -->
-      <div class="col-md-6 mb-4 mb-md-0">
-        <div class="image-container">
+    <div class="software-card">
+      <!-- Lado izquierdo visual -->
+      <div class="software-left">
+        <div class="image-container1">
           <img
-            src="/static/img/imagen1.avif"
+            src="{{ url_for('static', filename='img/desarrollosoftware.png') }}"
             alt="Desarrollo de Software - Equipo trabajando en código"
             class="service-image"
           />
         </div>
+
+        <div class="service-label">DESARROLLO DE SOFTWARE</div>
       </div>
 
-      <!-- Columna para el texto -->
-      <div class="col-md-6">
-        <h2 class="mb-4" style="color: var(--primary); font-weight: 700">
-          Desarrollo de Software
-        </h2>
+      <!-- Lado derecho contenido -->
+      <div class="software-right">
+        <span class="service-badge">SERVICIO</span>
 
-        <p
-          class="mb-4"
-          style="font-size: 1.1rem; color: #555; line-height: 1.6"
-        >
-          En <strong>Sumiked</strong> creamos soluciones digitales a la medida
-          que impulsan la eficiencia, reducen costos y fortalecen la seguridad
-          operativa de tu organización.
+        <h2>Soluciones que <span>escalan contigo</span></h2>
+
+        <p>
+          En <strong>Sumiked</strong> construimos plataformas digitales a la
+          medida — flexibles, seguras y listas para adaptarse a los entornos más
+          exigentes.
         </p>
 
-        <p
-          class="mb-4"
-          style="font-size: 1.1rem; color: #555; line-height: 1.6"
-        >
-          Nuestro enfoque modular nos permite construir plataformas
-          <strong>flexibles, escalables y seguras</strong>, capaces de adaptarse
-          a los entornos más exigentes.
-        </p>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <h4>Impacto real</h4>
+            <p>Resultados medibles alineados a tus objetivos.</p>
+          </div>
 
-        <p
-          class="mb-4"
-          style="font-size: 1.1rem; color: #555; line-height: 1.6"
-        >
-          <strong>Impacto real:</strong> cada proyecto se orienta a generar
-          resultados medibles y sostenibles, alineados con tus objetivos
-          estratégicos.
-        </p>
+          <div class="benefit-card">
+            <h4>Modular</h4>
+            <p>Arquitectura escalable que crece contigo.</p>
+          </div>
 
-        <p
-          class="mb-4"
-          style="font-size: 1.1rem; color: #555; line-height: 1.6"
-        >
-          <strong>Experiencia sin fricciones:</strong> optimizamos procesos y
-          mejoramos la interacción del usuario con tecnología que se anticipa a
-          los desafíos.
-        </p>
+          <div class="benefit-card">
+            <h4>Seguridad</h4>
+            <p>Protocolos empresariales integrados desde el diseño.</p>
+          </div>
 
-        <!-- Botones de contacto -->
-        <div class="d-flex gap-3 mt-4">
+          <div class="benefit-card">
+            <h4>Sin fricciones</h4>
+            <p>UX que anticipa desafíos y simplifica el trabajo.</p>
+          </div>
+        </div>
+
+        <div class="tech-tags">
+          <span>Aplicaciones web</span>
+          <span>Apps móviles</span>
+          <span>Automatización</span>
+          <span>Integraciones</span>
+        </div>
+
+        <!-- Botones -->
+        <div class="d-flex gap-3 mt-4 flex-wrap">
           <a href="#" class="btn-feature whatsapp-btn">
             <i class="fab fa-whatsapp me-2"></i>
             WhatsApp
           </a>
+
           <a href="#" class="btn-feature gmail-btn">
             <i class="fas fa-envelope me-2"></i>
-            Gmail
+            Correo
           </a>
+        </div>
+
+        <!-- Estadísticas -->
+        <div class="stats-row">
+          <div>
+            <h3>100%</h3>
+            <p>Código a medida</p>
+          </div>
+
+          <div>
+            <h3>24/7</h3>
+            <p>Soporte post-entrega</p>
+          </div>
         </div>
       </div>
     </div>
@@ -75,105 +90,211 @@ block content %}
 
 <!-- Sección de Asistencia Técnica -->
 <section id="asistencia-tecnica" class="servicio-seccion">
-  <div class="d-flex flex-wrap asistencia-container">
-    <!-- Texto a la izquierda -->
-    <div
-      class="texto-lado-izquierdo d-flex flex-column justify-content-center align-items-start p-5"
-    >
-      <h2 class="mb-4">Asistencia Técnica</h2>
-      <p class="mb-4">
-        En Sumiked garantizamos que la tecnología no falle cuando más la
-        necesitas. Ofrecemos soporte especializado, presencial y virtual,
-        adaptado a entornos institucionales, comerciales y operativos.
-      </p>
-      <p class="mb-4">
-        🔧 Presencial: Diagnósticos rápidos y soluciones efectivas en campo, con
-        protocolos que aseguran trazabilidad y mínimo impacto.
-      </p>
-      <p class="mb-4">
-        🌐 Virtual: Soporte remoto ágil y seguro, con monitoreo y resolución en
-        tiempo real.
-      </p>
+  <div class="container">
+    <div class="support-card">
+      <!-- Lado izquierdo contenido -->
+      <div class="support-left">
+        <span class="service-badge">SOPORTE</span>
 
-      <p class="mb-4">
-        🎯 Protocolos personalizados: Atención adaptada a tus procesos, con
-        seguimiento y mejora continua.
-      </p>
-      <p class="mb-4">
-        📈 Más que soporte, estrategia: Cada intervención optimiza tu
-        infraestructura y fortalece tu ecosistema digital.
-      </p>
-    </div>
-    <div style="display: flex" class="img-lado-derecho">
-      <img
-        src="/static/img/asistencia2.jpg"
-        alt="Asistencia Técnica"
-        class="img-fluid"
-        alt="asistencia tecnica"
-        class="service-image"
-      />
+        <h2>Asistencia técnica <span>sin interrupciones</span></h2>
+
+        <p>
+          En <strong>Sumiked</strong> garantizamos que tu operación nunca se
+          detenga. Brindamos soporte especializado, presencial y remoto,
+          diseñado para entornos institucionales, comerciales y operativos.
+        </p>
+
+        <div class="support-grid">
+          <div class="support-box">
+            <h4>Presencial</h4>
+            <p>
+              Diagnóstico rápido y soluciones efectivas directamente en campo.
+            </p>
+          </div>
+
+          <div class="support-box">
+            <h4>Virtual</h4>
+            <p>Atención remota ágil, segura y con monitoreo en tiempo real.</p>
+          </div>
+
+          <div class="support-box">
+            <h4>Protocolos</h4>
+            <p>Atención personalizada alineada a tus procesos internos.</p>
+          </div>
+
+          <div class="support-box">
+            <h4>Estrategia</h4>
+            <p>Más que soporte: optimización real de tu ecosistema digital.</p>
+          </div>
+        </div>
+
+        <div class="support-tags">
+          <span>Soporte remoto</span>
+          <span>Mantenimiento</span>
+          <span>Monitoreo</span>
+          <span>Continuidad operativa</span>
+        </div>
+
+        <!-- Botones -->
+        <div class="d-flex gap-3 mt-4 flex-wrap">
+          <a href="#" class="btn-feature whatsapp-btn">
+            <i class="fab fa-whatsapp me-2"></i>
+            WhatsApp
+          </a>
+
+          <a href="#" class="btn-feature gmail-btn">
+            <i class="fas fa-envelope me-2"></i>
+            Correo
+          </a>
+        </div>
+
+        <!-- Estadísticas -->
+        <div class="support-stats">
+          <div>
+            <h3>24/7</h3>
+            <p>Disponibilidad</p>
+          </div>
+
+          <div>
+            <h3>+100</h3>
+            <p>Incidencias resueltas</p>
+          </div>
+
+          <div>
+            <h3>98%</h3>
+            <p>Satisfacción operativa</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lado derecho visual -->
+      <div class="support-right">
+        <div class="support-image-box">
+          <img
+            src="{{ url_for('static', filename='img/tecnica3.png') }}"
+            alt="Asistencia Técnica"
+            class="service-image"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Sección de Mantenimiento -->
-<section id="servicio-mantenimiento" class="py-5 servicio-seccion">
+<!-- Sección de Mantenimiento de Equipos -->
+<section id="servicio-mantenimiento" class="servicio-seccion">
   <div class="container">
-    <div class="row align-items-center">
-      <!-- Columna de texto -->
-      <div class="col-md-6">
-        <div class="text-content-mantenimiento">
-          <h2 class="mb-4">Mantenimiento de equipos</h2>
-          <p class="mb-4">
-            En Sumiked, el mantenimiento es prevención estratégica: garantizamos
-            eficiencia, seguridad y continuidad en tus equipos, alineados con
-            los objetivos de tu institución.
-          </p>
-          <p class="mb-4">
-            🔍 Diagnóstico proactivo: detectamos riesgos antes de que se
-            conviertan en fallos.
-          </p>
-          <p class="mb-4">
-            🔄 Preventivo y correctivo: limpieza, optimización, actualizaciones,
-            respaldos y reparación de partes críticas.
-          </p>
-          <p class="mb-4">
-            📊 Informes claros: historial de mantenimiento y recomendaciones con
-            trazabilidad para auditorías.
-          </p>
-          <p class="mb-4">
-            🧩 Protocolos adaptados: planes según el tipo de equipo, frecuencia
-            de uso y criticidad operativa.
-          </p>
-          <p class="mb-4">
-            🔐 Seguridad garantizada: buenas prácticas en el manejo de datos y
-            protección de la información.
-          </p>
+    <div class="maintenance-premium-card">
+      <!-- Lado izquierdo visual -->
+      <div class="maintenance-visual">
+        <div class="main-maintenance-image">
+          <img
+            src="{{ url_for('static', filename='img/mantenimiento.png') }}"
+            alt="Mantenimiento de equipos"
+          />
+        </div>
+
+        <!-- Indicadores técnicos -->
+        <div class="maintenance-checklist">
+          <div class="check-item">
+            <i class="fas fa-tools"></i>
+            <span>Diagnóstico proactivo</span>
+          </div>
+
+          <div class="check-item">
+            <i class="fas fa-sync-alt"></i>
+            <span>Preventivo y correctivo</span>
+          </div>
+
+          <div class="check-item">
+            <i class="fas fa-shield-alt"></i>
+            <span>Protección de datos</span>
+          </div>
+
+          <div class="check-item">
+            <i class="fas fa-server"></i>
+            <span>Continuidad operativa</span>
+          </div>
         </div>
       </div>
 
-      <!-- Columna de imágenes -->
-      <div class="col-md-6 mb-4 mb-md-0">
-        <div class="image-grid-maintenance">
-          <div class="image-grid-container">
-            <div class="maintenance-img img-1">
-              <img
-                src="/static/img/mantenimiento1.avif"
-                alt="Mantenimiento 1"
-              />
-            </div>
-            <div class="maintenance-img img-2">
-              <img src="/static/img/mantenimiento2.jpg" alt="Mantenimiento 2" />
-            </div>
-            <div class="maintenance-img img-3">
-              <img src="/static/img/mantenimiento3.jpg" alt="Mantenimiento 3" />
-            </div>
-            <div class="maintenance-img img-4">
-              <img
-                src="/static/img/mantenimiento4.jpeg"
-                alt="Mantenimiento 4"
-              />
-            </div>
+      <!-- Lado derecho contenido -->
+      <div class="maintenance-content">
+        <span class="service-badge">PREVENCIÓN</span>
+
+        <h2>Mantenimiento que <span>evita fallos</span></h2>
+
+        <p>
+          En <strong>Sumiked</strong> entendemos el mantenimiento como una
+          estrategia preventiva que protege tu operación, mejora el rendimiento
+          y asegura la continuidad tecnológica de tu organización.
+        </p>
+
+        <div class="maintenance-benefits">
+          <div class="maintenance-item">
+            <h4>Diagnóstico</h4>
+            <p>
+              Detectamos riesgos antes de que se conviertan en fallos críticos.
+            </p>
+          </div>
+
+          <div class="maintenance-item">
+            <h4>Optimización</h4>
+            <p>
+              Limpieza, ajustes y mejoras constantes para máximo rendimiento.
+            </p>
+          </div>
+
+          <div class="maintenance-item">
+            <h4>Trazabilidad</h4>
+            <p>
+              Informes técnicos claros con historial y recomendaciones reales.
+            </p>
+          </div>
+
+          <div class="maintenance-item">
+            <h4>Seguridad</h4>
+            <p>
+              Protección de equipos, información sensible y procesos críticos.
+            </p>
+          </div>
+        </div>
+
+        <div class="maintenance-tags">
+          <span>Preventivo</span>
+          <span>Correctivo</span>
+          <span>Backups</span>
+          <span>Optimización</span>
+        </div>
+
+        <!-- Botones -->
+        <div class="d-flex gap-3 mt-4 flex-wrap">
+          <a href="#" class="btn-feature whatsapp-btn">
+            <i class="fab fa-whatsapp me-2"></i>
+            WhatsApp
+          </a>
+
+          <a href="#" class="btn-feature gmail-btn">
+            <i class="fas fa-envelope me-2"></i>
+            Correo
+          </a>
+        </div>
+
+        <!-- Estadísticas -->
+        <div class="maintenance-stats-row">
+          <div>
+            <h3>+150</h3>
+            <p>Equipos atendidos</p>
+          </div>
+
+          <div>
+            <h3>99%</h3>
+            <p>Continuidad operativa</p>
+          </div>
+
+          <div>
+            <h3>24/7</h3>
+            <p>Respuesta técnica</p>
           </div>
         </div>
       </div>
@@ -182,68 +303,118 @@ block content %}
 </section>
 
 <!-- Sección de Instalación de Redes -->
-<section id="instalacion-redes" class="py-5 servicio-seccion">
+<!-- Sección de Instalación de Redes -->
+<section id="instalacion-redes" class="servicio-seccion">
   <div class="container">
-    <div class="row align-items-center">
-      <!-- Columna principal -->
-      <div class="col-md-12 redes-container">
-        <div class="redes-content-wrapper">
-          <h2 class="redes-tittle text-center mb-4">Instalación de redes</h2>
+    <div class="network-card">
+      <!-- Lado izquierdo contenido -->
+      <div class="network-content">
+        <span class="service-badge">CONECTIVIDAD</span>
 
-          <div class="redes-images-row">
-            <div class="redes-img-col">
-              <div class="redes-img-wrapper">
-                <img
-                  src="/static/img/mantenimiento4.jpeg"
-                  alt="Instalación de redes 1"
-                  class="redes-image"
-                />
-              </div>
-            </div>
-            <div class="redes-img-col">
-              <div class="redes-img-wrapper">
-                <img
-                  src="/static/img/mantenimiento2.jpg"
-                  alt="Instalación de redes 2"
-                  class="redes-image"
-                />
-              </div>
-            </div>
+        <h2>Redes que <span>conectan y protegen</span></h2>
+
+        <p>
+          En <strong>Sumiked</strong> diseñamos e implementamos redes seguras,
+          escalables y eficientes que sostienen operaciones críticas en entornos
+          institucionales, comerciales y empresariales.
+        </p>
+
+        <div class="network-benefits">
+          <div class="network-item">
+            <h4>Diseño estratégico</h4>
+            <p>
+              Arquitectura eficiente con cableado estructurado, Wi-Fi y VLAN.
+            </p>
           </div>
 
-          <div class="redes-text-container">
-            <p class="text-center redes-text">
-              En Sumiked diseñamos e implementamos redes seguras, escalables y
-              trazables que sostienen operaciones críticas en entornos
-              educativos, institucionales y comerciales.
+          <div class="network-item">
+            <h4>Instalación profesional</h4>
+            <p>Implementación bajo normas técnicas con máxima confiabilidad.</p>
+          </div>
+
+          <div class="network-item">
+            <h4>Seguridad</h4>
+            <p>Control de acceso, firewalls y segmentación lógica avanzada.</p>
+          </div>
+
+          <div class="network-item">
+            <h4>Escalabilidad</h4>
+            <p>
+              Infraestructura preparada para crecer contigo sin perder
+              rendimiento.
             </p>
-            <p class="text-center redes-text">
-              🧠 Diseño estratégico: arquitectura de red eficiente con cableado
-              estructurado, Wi-Fi, VLAN y redundancia.
-            </p>
-            <p class="text-center redes-text">
-              🔌 Instalación profesional: cableado bajo normas TIA/EIA,
-              configuración de switches, routers y APs, integración con sistemas
-              de seguridad.
-            </p>
-            <p class="text-center redes-text">
-              🔒 Seguridad desde el origen: firewalls, control de acceso y
-              segmentación lógica para proteger tus activos digitales.
-            </p>
-            <p class="text-center redes-text">
-              📋 Documentación completa: planos, diagramas y protocolos de
-              mantenimiento con trazabilidad.
-            </p>
-            <p class="text-center redes-text">
-              📈 Escalabilidad garantizada: redes modulares listas para crecer
-              contigo sin perder rendimiento.
-            </p>
+          </div>
+        </div>
+
+        <div class="network-tags">
+          <span>Wi-Fi Empresarial</span>
+          <span>Cableado estructurado</span>
+          <span>Switches & Routers</span>
+          <span>Seguridad de red</span>
+        </div>
+
+        <!-- Botones -->
+        <div class="d-flex gap-3 mt-4 flex-wrap">
+          <a href="#" class="btn-feature whatsapp-btn">
+            <i class="fab fa-whatsapp me-2"></i>
+            WhatsApp
+          </a>
+
+          <a href="#" class="btn-feature gmail-btn">
+            <i class="fas fa-envelope me-2"></i>
+            Correo
+          </a>
+        </div>
+
+        <!-- Estadísticas -->
+        <div class="network-stats">
+          <div>
+            <h3>99%</h3>
+            <p>Estabilidad operativa</p>
+          </div>
+
+          <div>
+            <h3>24/7</h3>
+            <p>Monitoreo y soporte</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lado derecho visual -->
+      <div class="network-visual">
+        <div class="network-main-image">
+          <img
+            src="{{ url_for('static', filename='img/instalacionredes.png') }}"
+            alt="Instalación de redes"
+          />
+        </div>
+
+        <div class="network-checklist">
+          <div class="network-check-item">
+            <i class="fas fa-network-wired"></i>
+            <span>Cableado estructurado</span>
+          </div>
+
+          <div class="network-check-item">
+            <i class="fas fa-wifi"></i>
+            <span>Wi-Fi empresarial</span>
+          </div>
+
+          <div class="network-check-item">
+            <i class="fas fa-lock"></i>
+            <span>Seguridad perimetral</span>
+          </div>
+
+          <div class="network-check-item">
+            <i class="fas fa-server"></i>
+            <span>Infraestructura escalable</span>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 {% endblock %} {% block extra_js %}
 <!-- Revisar por que no se aplica correctamente cuando se encuentra en el archivo js-->
 <script>

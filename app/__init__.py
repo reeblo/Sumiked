@@ -41,5 +41,5 @@ def create_app(config_name=None):
 
     # 👇 IMPORTANTE para que Flask-Migrate detecte modelos
     from app import models
-   
+  
     return app

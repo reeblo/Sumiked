@@ -68,18 +68,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const productForm = document.getElementById("productForm");
   const saveButton = document.getElementById("saveProduct");
 
-  // Previsualización de imagen
-  document
-    .getElementById("productImage")
-    .addEventListener("input", function () {
-      const preview = document.getElementById("imagePreview");
-      if (this.value) {
-        preview.innerHTML = `<img src="${this.value}" class="product-image-preview mt-2" style="max-width: 200px;">`;
-      } else {
-        preview.innerHTML = "";
-      }
-    });
-
   // Agregar producto
   saveButton.addEventListener("click", async function () {
     const formData = new FormData(productForm);
@@ -131,9 +119,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Mostrar previsualización
       if (product.image_url) {
-        document.getElementById(
-          "imagePreview"
-        ).innerHTML = `<img src="${product.image_url}" class="product-image-preview mt-2" style="max-width: 200px;">`;
+        document.getElementById("imagePreview").innerHTML =
+          `<img src="${product.image_url}" class="product-image-preview mt-2" style="max-width: 200px;">`;
       }
 
       productModal.show();
@@ -182,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // Inicializar tooltips de Bootstrap
 document.addEventListener("DOMContentLoaded", function () {
   var tooltipTriggerList = [].slice.call(
-    document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    document.querySelectorAll('[data-bs-toggle="tooltip"]'),
   );
   var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl);
