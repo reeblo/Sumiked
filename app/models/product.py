@@ -10,7 +10,7 @@ class Product(db.Model):
     description = db.Column(db.Text, nullable=True)
     price = db.Column(db.Float, nullable=False, default=0.0)
     category = db.Column(db.String(100), nullable=False)
-    image_url = db.Column(db.String(500), nullable=True)  # ✅ Aumentado de 255 a 500
+    image_url = db.Column(db.String(500), nullable=True)  
     stock = db.Column(db.Integer, default=0)
     is_active = db.Column(db.Boolean, default=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)

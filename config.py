@@ -7,9 +7,9 @@ class Config:
     
     # Base de datos
     SQLALCHEMY_DATABASE_URI = os.environ.get(
-        'DATABASE_URL',
-        'postgresql+psycopg2://postgres:jose242006@localhost:5432/sumiked'
-    )
+      'DATABASE_URL',
+      'mysql+pymysql://usuario:contraseña@localhost:3306/nombre_bd'
+    ) 
 
 
     
@@ -21,7 +21,7 @@ class Config:
     SESSION_COOKIE_SECURE = os.environ.get('SESSION_COOKIE_SECURE', 'False').lower() == 'true'
     
     # Uploads
-    UPLOAD_FOLDER = 'static/img/products'
+    UPLOAD_FOLDER = os.path.join('app', 'static', 'uploads', 'products')
     MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16MB max file size
     
     # Logging

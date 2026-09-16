@@ -5,7 +5,7 @@ from config import config
 import os
 import os
 
-# Inicializar extensiones
+# Inicializar extensiones principales
 db = SQLAlchemy()
 migrate = Migrate()
 
@@ -39,7 +39,7 @@ def create_app(config_name=None):
     from app.utils.commands import register_commands
     register_commands(app)
 
-    # 👇 IMPORTANTE para que Flask-Migrate detecte modelos
+    # tener en cuenta para que Flask-Migrate detecte modelos
     from app import models
   
     return app
